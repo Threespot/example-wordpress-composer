@@ -185,7 +185,7 @@ jobs:
           command: ./.ci/deploy/pantheon/dev-multidev
 
       - slack/notify:
-          event: pass          
+          event: always          
 
   behat_test:
     <<: *defaults
