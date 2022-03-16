@@ -125,7 +125,7 @@ jobs:
             - vendor
             
       - slack/notify:
-          event: error                
+          event: fail                
 
   build_yarn:
     <<: *defaults
@@ -163,7 +163,7 @@ jobs:
             - web/wp-content/themes/sage/dist
             
       - slack/notify:
-          event: error                      
+          event: fail                      
 
   deploy_to_pantheon:
     <<: *defaults
