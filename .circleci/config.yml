@@ -35,7 +35,9 @@ defaults: &defaults
     ADMIN_USERNAME: admin
     TERM: dumb
 
-version: 2
+version: 2.1
+orbs:
+  slack: circleci/slack@4.8.3
 jobs:
   configure_env_vars:
     <<: *defaults
@@ -182,6 +184,9 @@ jobs:
           name: deploy to Pantheon
           command: ./.ci/deploy/pantheon/dev-multidev
 
+      - slack/notify:
+          event: pass          
+
   behat_test:
     <<: *defaults
     steps:
@@ -273,6 +278,7 @@ workflows:
       - build_yarn
       - build_php
       - deploy_to_pantheon:
+          context: slack
           requires:
             # - static_tests
             - build_yarn
