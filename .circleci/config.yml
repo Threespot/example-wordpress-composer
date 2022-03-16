@@ -123,6 +123,9 @@ jobs:
           paths:
             - web
             - vendor
+            
+      - slack/notify:
+          event: error                
 
   build_yarn:
     <<: *defaults
@@ -158,6 +161,9 @@ jobs:
           # Must be relative path from root
           paths:
             - web/wp-content/themes/sage/dist
+            
+      - slack/notify:
+          event: error                      
 
   deploy_to_pantheon:
     <<: *defaults
