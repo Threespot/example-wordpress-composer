@@ -15,15 +15,15 @@
 
 ## Pantheon Environments
 
-- **Live** - http://live-fix-me.pantheonsite.io/
-- **Test** - http://test-fix-me.pantheonsite.io/
-- **Dev** - http://dev-fix-me.pantheonsite.io/
+- **Live** - http://live-FIXME:app-name.pantheonsite.io/
+- **Test** - http://test-FIXME:app-name.pantheonsite.io/
+- **Dev** - http://dev-FIXME:app-name.pantheonsite.io/
 
 ## Local Development
 
 In order to more easily recreate the production environment locally, [Lando](https://lando.dev/) is used for local development. We also use Pantheon’s CLI, Terminus, to sync files and databases.
 
-- **PHP Server** - http://fix-me.lndo.site/
+- **PHP Server** - http://FIXME:app-name.lndo.site/
 - **Webpack Server** - https://localhost:3000
 
 ### Prerequisites
@@ -35,17 +35,17 @@ Install all the required local dependencies:
 - Lando v3.0.6 ([Windows](https://docs.devwithlando.io/installation/windows.html), [macOS](https://docs.devwithlando.io/installation/macos.html))
 - [Terminus](https://pantheon.io/docs/terminus/install/) 2.3.0, Pantheon’s CLI tool
 - [Composer](https://getcomposer.org/doc/00-intro.md)
-- [Node](https://nodejs.org/en/)  10.21.0
+- [Node](https://nodejs.org/en/) 10.21.0
   Note: The sage theme dependencies do not support version of Node greater than 10. We recommend [asdf](https://github.com/asdf-vm/asdf) for managing multiple versions of Node
 - Yarn
   ([Windows](https://yarnpkg.com/en/docs/install#windows-stable), [macOS](https://yarnpkg.com/en/docs/install#mac-stable))
 
-You'll also need write access to this repo and be a member of the [Pantheon Project](https://dashboard.pantheon.io/sites/FIXME#dev/code).
+You'll also need write access to this repo and be a member of the [Pantheon Project](https://dashboard.pantheon.io/sites/FIXME:app-name#dev/code).
 
 ### Installation
 
 1. Clone the Repo  
-   `$ git clone https://github.com/Threespot/fix-me.git`
+   `$ git clone https://github.com/Threespot/FIXME:app-name.git`
 1. Install Application Composer Dependencies  
    `$ composer install`
 1. Install Theme Composer Dependencies
@@ -103,7 +103,7 @@ lando pull --database=test --files=test --code=none
 
 ## Deploying
 
-Code committed to the remote `master` branch is automatically deployed to the `dev` environement on Pantheon. After a local branch is pushed, [CircleCI](https://circleci.com/gh/Threespot/fix-me) will build and deploy the files to Pantheon’s [dev environment](https://dashboard.pantheon.io/sites/5118c78c-b29d-467c-b178-2728fe3f293c#dev/code). You can tell CircleCI to not run by adding `[skip ci]` to the commit message.
+Code committed to the remote `master` branch is automatically deployed to the `dev` environement on Pantheon. After a local branch is pushed, [CircleCI](https://circleci.com/gh/Threespot/FIXME:app-name) will build and deploy the files to Pantheon’s [dev environment](https://dashboard.pantheon.io/sites/5118c78c-b29d-467c-b178-2728fe3f293c#dev/code). You can tell CircleCI to not run by adding `[skip ci]` to the commit message.
 
 Code that exists on `dev` can be promoted to the `test` enviroment, and `test` can be promoted to the `live` environment. Details about the application lifecycle can be read [here](https://pantheon.io/agencies/development-workflow/dev-test-live-workflow).
 Feature branches with a corresponding pull request will create a multi-dev enviroment used for testing indiviual features. Docs are available [here](https://pantheon.io/docs/multidev)
@@ -123,7 +123,7 @@ lando composer run-script deploy:test
 or
 
 ```shell
-lando terminus env:deploy fix-me.test
+lando terminus env:deploy FIXME:app-name.test
 ```
 
 #### Live Environment
@@ -137,5 +137,5 @@ lando composer run-script deploy:live
 or
 
 ```shell
-lando terminus env:deploy fix-me.live
+lando terminus env:deploy FIXME:app-name.live
 ```
