@@ -8,19 +8,19 @@
   "urls": [
     {
       "label": "Lando",
-      "href": "https://app-name.lndo.site/"
+      "href": "https://FIXME:app-name.lndo.site/"
     },
     {
       "label": "FIXME:PROJECT_NAME Pantheon Dev",
-      "href": "https://dev-app-name.pantheonsite.io/"
+      "href": "https://dev-FIXME:app-name.pantheonsite.io/"
     },
     {
       "label": "FIXME:PROJECT_NAME Pantheon Test",
-      "href": "https://test-app-name.pantheonsite.io/"
+      "href": "https://test-FIXME:app-name.pantheonsite.io/"
     },      
     {
       "label": "FIXME:PROJECT_NAME Pantheon Live",
-      "href": "https://live-app-name.pantheonsite.io/"
+      "href": "https://live-FIXME:app-name.pantheonsite.io/"
     },      
     {
       "label": "FIXME:domain",
