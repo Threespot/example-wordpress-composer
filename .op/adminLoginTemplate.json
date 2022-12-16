@@ -1,6 +1,6 @@
 
 {
-  "title": "FIXME:PROJECT_NAME WordPress Admin",
+  "title": "TESTING CNAS Reports WordPress Admin",
   "category": "LOGIN",
   "tags": [
     "wordpress", "admin"
@@ -8,24 +8,24 @@
   "urls": [
     {
       "label": "Lando",
-      "href": "https://FIXME:app-name.lndo.site/"
+      "href": "https://cnas-reports.lndo.site/"
     },
     {
       "label": "FIXME:PROJECT_NAME Pantheon Dev",
-      "href": "https://dev-FIXME:app-name.pantheonsite.io/"
+      "href": "https://dev-cnas-reports.pantheonsite.io/"
     },
     {
       "label": "FIXME:PROJECT_NAME Pantheon Test",
-      "href": "https://test-FIXME:app-name.pantheonsite.io/"
+      "href": "https://test-cnas-reports.pantheonsite.io/"
     },      
     {
       "label": "FIXME:PROJECT_NAME Pantheon Live",
-      "href": "https://live-FIXME:app-name.pantheonsite.io/"
+      "href": "https://live-cnas-reports.pantheonsite.io/"
     },      
     {
-      "label": "FIXME:domain",
+      "label": "CNAS.org",
       "primary": true,
-      "href": "https://FIXME:domain"
+      "href": "https://CNAS.org"
     }
   ],
   "fields": [ 
