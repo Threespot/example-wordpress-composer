@@ -29,7 +29,6 @@
     "behat/mink-goutte-driver": "^1.2.1",
     "brain/monkey": "^2.2.0",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-    "dmore/behat-chrome-extension": "^1.2",
     "genesis/behat-fail-aid": "^2.1",
     "paulgibbs/behat-wordpress-extension": "^3.3.0",
     "phpunit/phpunit": "^7.5.1",
