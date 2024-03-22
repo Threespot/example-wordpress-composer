@@ -1,7 +1,7 @@
 module.exports = {
   onBeforeScript: "puppet/onBefore.js",
   onReadyScript: "puppet/onReady.js",
-  report: ['browser'],
+  report: ['browser', 'CI'],
   engine: 'puppeteer',
   engineOptions: {
     args: ['--no-sandbox']
