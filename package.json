@@ -1,0 +1,20 @@
+{
+  "name": "fixme",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:Threespot/FIXME:app-name.git",
+  "author": "Threespot <techemptor@threespot.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "backstopjs": "^6.3.22"
+  },
+  "scripts": {
+    "terminus:paths:live": "terminus remote:wp FIXME:app-name.live -- post list --post_status=published --post_type=page,post --fields=url,name --format=json > ./backstop/shared/live-links.json",
+    "backstop:local:ref": "npx backstop reference --config=backstop/local.js",
+    "backstop:local:test": "npx backstop test --config=backstop/local.js",
+    "backstop:openReport": "npx backstop openReport --config=backstop/local.js",
+    "backstop:staging:ref": "npx backstop reference --config=backstop/local.js",
+    "backstop:staging:test": "npx backstop test --config=backstop/staging.js"
+  }
+}
