@@ -1,7 +1,9 @@
+# NOTE: See Pantheon example WP repo for original version this config file was based off of
+# https://github.com/pantheon-systems/example-wordpress-composer/blob/master/.circleci/config.yml
 # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 defaults: &defaults
   docker:
-    - image: quay.io/pantheon-public/build-tools-ci:6.x
+    - image: quay.io/pantheon-public/build-tools-ci:8.x-php8.2
   working_directory: ~/example_wordpress_composer
   environment:
     #=========================================================================
@@ -13,16 +15,15 @@ defaults: &defaults
     # TERMINUS_SITE:  Name of the Pantheon site to run tests on, e.g. my_site
     # TERMINUS_TOKEN: The Pantheon machine token
     # GITHUB_TOKEN:   The GitHub personal access token
-    # GIT_EMAIL:    The email address to use when making commits
+    # GIT_EMAIL:      The email address to use when making commits
     #
     # TEST_SITE_NAME: The name of the test site to provide when installing.
     # ADMIN_PASSWORD: The admin password to use when installing.
-    # ADMIN_EMAIL:  The email address to give the admin when installing.
+    # ADMIN_EMAIL:    The email address to give the admin when installing.
     #=========================================================================
-    TZ: "/usr/share/zoneinfo/America/Los_Angeles"
-  
+    TZ: "/usr/share/zoneinfo/America/New_York"
+
     # The variables below usually do not need to be modified.
-  
     #======================================================================================================================================
     # Circle CI 2.0 does not yet expand environment variables so they have to be manually EXPORTed
     # Once environment variables can be expanded the variables below can be uncommented and the EXPORTs in set-up-globals.sh can be removed
@@ -30,7 +31,6 @@ defaults: &defaults
     # See: https://discuss.circleci.com/t/environment-variable-expansion-in-working-directory/11322
     # See: https://discuss.circleci.com/t/circle-2-0-global-environment-variables/8681
     #======================================================================================================================================
-  
     NOTIFY: 'scripts/github/add-commit-comment {project} {sha} "Created multidev environment [{site}#{env}]({dashboard-url})." {site-url}'
     ADMIN_USERNAME: admin
     TERM: dumb
@@ -109,7 +109,9 @@ jobs:
 
       - run:
           name: install theme composer dependencies
-          command: cd web/wp-content/themes/sage && composer install
+          # Note: Add `--ignore-platform-req=ext-redis` for sites using Object Cache Pro
+          #       https://docs.pantheon.io/object-cache/wordpress
+          command: cd web/wp-content/themes/sage && composer install --ignore-platform-req=ext-redis --no-interaction --optimize-autoloader
 
       - save_cache:
           key: vendor-{{ checksum "composer.lock" }}
@@ -125,7 +127,9 @@ jobs:
   build_yarn:
     <<: *defaults
     docker:
-      - image: circleci/node:10.16.2
+      # Note: Use the latest active Node release
+      #       https://nodejs.org/en/about/previous-releases
+      - image: cimg/node:20.17.0
 
     steps:
       - checkout
@@ -141,7 +145,6 @@ jobs:
 
       - run:
           name: build theme assets
-          # If non-hashed versions of site assets are needed for 3rd parties, also run `yarn build:nohash`
           command: cd web/wp-content/themes/sage && yarn build
 
       - save_cache:
@@ -155,7 +158,7 @@ jobs:
           root: .
           # Must be relative path from root
           paths:
-            - web/wp-content/themes/sage/dist
+            - web/wp-content/themes/sage/public
 
   deploy_to_pantheon:
     <<: *defaults
@@ -272,7 +275,7 @@ workflows:
       # - static_tests
       - build_yarn
       - build_php:
-          context: 
+          context:
             - acf_license
       - deploy_to_pantheon:
           requires:
@@ -292,13 +295,13 @@ workflows:
       #       - deploy_to_pantheon
       #       - visual_regression_test
 
-  scheduled_update_check:
-    triggers:
-       - schedule:
-           cron: "0 0 * * *"
-           filters:
-             branches:
-              only:
-                - master
-    jobs:
-      - composer_lock_updater
+  # scheduled_update_check:
+  #   triggers:
+  #      - schedule:
+  #          cron: "0 0 * * *"
+  #          filters:
+  #            branches:
+  #             only:
+  #               - master
+  #   jobs:
+  #     - composer_lock_updater
