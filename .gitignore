@@ -36,6 +36,13 @@ web/private/scripts/quicksilver
 !.circleci
 .bashrc
 
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/php.ini
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 # Add directories containing build assets below.
 # Keep all additions above the "cut" line.
 
