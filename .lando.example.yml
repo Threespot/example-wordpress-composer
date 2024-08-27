@@ -5,7 +5,7 @@ recipe: pantheon
 config:
   framework: wordpress
   site: fixme-app-name
-  id: FIXME:pantheon-id
+  id: fixme-pantheon-id
 events:
   pre-start:
     # Create Acorn cache folder if it doesn’t already exist
