@@ -58,7 +58,6 @@ auth.json
 # Include any plugins not loaded via composer
 !web/wp-content/plugins/fly-dynamic-image-resizer
 !web/wp-content/themes/sage
-!web/wp-content/uploads/cache/acorn/framework/cache/.gitkeep
 
 # Add directories containing build assets below.
 # Keep all additions above the "cut" line.
