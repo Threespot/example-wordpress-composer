@@ -61,7 +61,9 @@ auth.json
 
 # Add directories containing build assets below.
 # Keep all additions above the "cut" line.
-
+node_modules
+backstop_data
+backstop/shared/live-links.json
 
 
 # :::::::::::::::::::::: cut ::::::::::::::::::::::
