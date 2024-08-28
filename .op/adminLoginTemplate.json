@@ -1,6 +1,6 @@
 
 {
-  "title": "FIXME WordPress Admin",
+  "title": "fixme-project-name WordPress Admin",
   "category": "LOGIN",
   "tags": [
     "wordpress", "admin"
@@ -8,26 +8,26 @@
   "urls": [
     {
       "label": "Lando",
-      "href": "https://app-name.lndo.site/"
+      "href": "https://fixme-app-name.lndo.site/"
     },
     {
-      "label": "FIXME Pantheon Dev",
-      "href": "https://dev-app-name.pantheonsite.io/"
+      "label": "fixme-project-name Pantheon Dev",
+      "href": "https://dev-fixme-app-name.pantheonsite.io/"
     },
     {
-      "label": "FIXME Pantheon Test",
-      "href": "https://test-app-name.pantheonsite.io/"
-    },      
+      "label": "fixme-project-name Pantheon Test",
+      "href": "https://test-fixme-app-name.pantheonsite.io/"
+    },
     {
-      "label": "FIXME Pantheon Live",
-      "href": "https://live-app-name.pantheonsite.io/"
-    },      
+      "label": "fixme-project-name Pantheon Live",
+      "href": "https://live-fixme-app-name.pantheonsite.io/"
+    },
     {
-      "label": "FIXME.org",
+      "label": "fixme-domain",
       "primary": true,
-      "href": "https://fixme.org"
+      "href": "https://fixme-domain"
     }
   ],
-  "fields": [ 
+  "fields": [
   ]
 }
