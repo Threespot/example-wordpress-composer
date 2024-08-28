@@ -27,11 +27,11 @@
     "oscarotero/env": "^2.1",
     "pantheon-systems/pantheon-mu-plugin": "^1.5",
     "pantheon-systems/quicksilver-pushback": "^2.0",
-    "pantheon-systems/wordpress-composer": "~6.6.1",
     "roots/acorn": "^4.2.2",
     "roots/acorn-prettify": "^1.0.1",
     "roots/bedrock-autoloader": "^1.0",
     "roots/bedrock-disallow-indexing": "^2.0",
+    "roots/wordpress": "~6.6.1",
     "roots/wp-config": "^1.0.0",
     "roots/wp-password-bcrypt": "^1.1.0",
     "vlucas/phpdotenv": "^5.4",
@@ -72,7 +72,8 @@
       "ffraenz/private-composer-installer": true,
       "johnpbloch/wordpress-core-installer": true,
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "rvtraveller/qs-composer-installer": true
+      "rvtraveller/qs-composer-installer": true,
+      "roots/wordpress-core-installer": true
     }
   },
   "minimum-stability": "dev",
