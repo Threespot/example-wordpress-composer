@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "821dd88c37a089c19a0300323abe1464",
+    "content-hash": "48c485d04bcb61dd0f24d3742becccb3",
     "packages": [
         {
             "name": "brick/math",
@@ -6911,6 +6911,24 @@
             "homepage": "https://wordpress.org/plugins/admin-menu-editor/"
         },
         {
+            "name": "wpackagist-plugin/admin-notices-manager",
+            "version": "1.5.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/admin-notices-manager/",
+                "reference": "tags/1.5.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/admin-notices-manager.1.5.0.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/admin-notices-manager/"
+        },
+        {
             "name": "wpackagist-plugin/block-manager",
             "version": "3.0.0",
             "source": {
@@ -7037,6 +7055,24 @@
             "homepage": "https://wordpress.org/plugins/pantheon-advanced-page-cache/"
         },
         {
+            "name": "wpackagist-plugin/pantheon-hud",
+            "version": "0.4.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/pantheon-hud/",
+                "reference": "tags/0.4.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/pantheon-hud.0.4.3.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/pantheon-hud/"
+        },
+        {
             "name": "wpackagist-plugin/query-monitor",
             "version": "3.16.4",
             "source": {
@@ -7110,15 +7146,15 @@
         },
         {
             "name": "wpackagist-plugin/safe-svg",
-            "version": "2.2.5",
+            "version": "2.2.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/safe-svg/",
-                "reference": "tags/2.2.5"
+                "reference": "tags/2.2.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/safe-svg.2.2.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/safe-svg.2.2.6.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
