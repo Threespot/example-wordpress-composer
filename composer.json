@@ -6,8 +6,12 @@
   "keywords": [],
   "repositories": [
     {
-      "type": "composer",
-      "url": "https://wpackagist.org"
+        "type":"composer",
+        "url": "https://wpackagist.org",
+        "only": [
+            "wpackagist-plugin/*",
+            "wpackagist-theme/*"
+        ]
     },
     {
       "type": "composer",
@@ -37,7 +41,6 @@
     "vlucas/phpdotenv": "^5.4",
     "wpackagist-plugin/acf-extended": "^0.9.0.7",
     "wpackagist-plugin/admin-menu-editor": "^1.12.4",
-    "wpackagist-plugin/admin-notices-manager": "^1.5.0",
     "wpackagist-plugin/block-manager": "^3.0",
     "wpackagist-plugin/disable-embeds": "^1.5",
     "wpackagist-plugin/disable-emojis": "^1.7",
