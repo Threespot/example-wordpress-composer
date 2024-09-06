@@ -109,6 +109,16 @@ web/wp-content/uploads/cache/*
 
 # Include any plugins not loaded via composer
 !web/wp-content/plugins/fly-dynamic-image-resizer
+# !web/wp-content/plugins/facetwp*
+# !web/wp-content/plugins/facetwp*/**
+# !web/wp-content/plugins/gravityforms*
+# !web/wp-content/plugins/gravityforms*/**
+# !web/wp-content/plugins/searchwp*
+# !web/wp-content/plugins/searchwp*/**
+# !web/wp-content/plugins/wp-all-import-pro
+# !web/wp-content/plugins/wp-all-import-pro/**
+# !web/wp-content/plugins/wpai-*
+# !web/wp-content/plugins/wpai-*/**
 
 # Keep custom theme folder
 !web/wp-content/themes/sage
