@@ -29,6 +29,7 @@ add_action('init', function() {
     'has_archive' => true,
     'hierarchical' => false,
     'publicly_queryable' => true,
+    'show_in_nav_menus' => false,// hide from “Add menu items” sidebar
     'show_in_rest' => true,
     'enter_title_here' => 'Enter full name',
     # Add taxonomy filter in the admin list view
