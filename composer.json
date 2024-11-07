@@ -138,6 +138,7 @@
     "theme:dev": [
       "Composer\\Config::disableProcessTimeout",
       "cd web/wp-content/themes/fixme-app-name && yarn dev"
-    ]
+    ],
+    "replace-fixme": "php scripts/composer/ReplaceFixme.php"
   }
 }
