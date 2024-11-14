@@ -20,6 +20,8 @@ $excludedDirectories = [
   ".vscode",
   "scripts",
   "web/wp-content",
+  "web/wp",
+  "vendor",
   "tests"
 ];
 
