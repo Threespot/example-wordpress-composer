@@ -1,122 +1,142 @@
-# Example WordPress Composer
+# fixme-project-name
 
-[![CircleCI](https://circleci.com/gh/pantheon-systems/example-wordpress-composer.svg?style=svg)](https://circleci.com/gh/pantheon-systems/example-wordpress-composer)
-[![Actively Maintained](https://img.shields.io/badge/Pantheon-Actively_Maintained-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#actively-maintained-support)
+Note: Badges are auto-generated when creating a new WP site on Pantheon via Terminus. You can copy the Markdown from CircleCI in Project Settings -> Status Badges.
 
+## Outline
 
-This repository is a reference implementation and start state for a modern WordPress workflow utilizing [Composer](https://getcomposer.org/), Continuous Integration (CI), Automated Testing, and Pantheon. Even though this is a good starting point, you will need to customize and maintain the CI/testing set up for your projects.
+- [Pantheon Environments](#pantheon-environments)
+- [Local Development](#local-development)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Boot WordPress Application](#boot-word-press-application)
+  - [Boot Theme (Webpack) Server](#boot-theme-webpack-server)
+  - [Pull Files and Database from Pantheon](#pull-files-and-database-from-pantheon)
+- [Deploying](#deploying)
+  - [Deployment Using Terminus](#deployment-using-terminus)
+    - [Test Environment](#test-environment)
+    - [Live Environment](#live-environment)
+- [Troubleshooting](/docs/troubleshooting.md)
 
-This repository is meant to be copied one-time by the the [Terminus Build Tools Plugin](https://github.com/pantheon-systems/terminus-build-tools-plugin) but can also be used as a template. It should not be cloned or forked directly.
+## Pantheon Environments
 
-The Terminus Build Tools plugin will scaffold a new project, including:
+- **Live** - https://live-fixme-app-name.pantheonsite.io
+- **Test** - https://test-fixme-app-name.pantheonsite.io
+- **Dev** - https://dev-fixme-app-name.pantheonsite.io
 
-* A Git repository
-* A free Pantheon sandbox site
-* Continuous Integration configuration/credential set up
+## Local Development
 
-For more details and instructions on creating a new project, see the [Terminus Build Tools Plugin](https://github.com/pantheon-systems/terminus-build-tools-plugin/).
+In order to more easily recreate the production environment locally, [Lando](https://lando.dev) is used for local development. We also use Pantheon’s CLI, Terminus, to sync files and databases.
 
-## Important files and directories
+- **PHP Server** - https://fixme-app-name.lndo.site/
+- **Webpack Server** - https://localhost:3000
 
-### `/web`
+### Prerequisites
 
-Pantheon will serve the site from the `/web` subdirectory due to the configuration in `pantheon.yml`. This is necessary for a Composer based workflow. Having your website in this subdirectory also allows for tests, scripts, and other files related to your project to be stored in your repo without polluting your web document root or being web accessible from Pantheon. They may still be accessible from your version control project if it is public. See [the `pantheon.yml`](https://pantheon.io/docs/pantheon-yml/#nested-docroot) documentation for details.
+Install all the required local dependencies:
 
-### `/web/wp`
+- [Git Version Control](https://git-scm.com/downloads)
+- [Docker](https://www.docker.com/products/docker-desktop)
+- Lando v3.0.6 ([Windows](https://docs.devwithlando.io/installation/windows.html), [macOS](https://docs.devwithlando.io/installation/macos.html))
+- [Terminus](https://pantheon.io/docs/terminus/install/) 2.3.0, Pantheon’s CLI tool
+- [Composer](https://getcomposer.org/doc/00-intro.md)
+- [Node](https://nodejs.org/en/)  10.21.0
+  Note: The sage theme dependencies do not support version of Node greater than 10. We recommend [asdf](https://github.com/asdf-vm/asdf) for managing multiple versions of Node
+- Yarn
+  ([Windows](https://yarnpkg.com/en/docs/install#windows-stable), [macOS](https://yarnpkg.com/en/docs/install#mac-stable))
 
-Even within the `/web` directory you may notice that other directories and files are in different places compared to a default WordPress installation. [WordPress allows installing WordPress core in its own directory](https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory), which is necessary when installing WordPress with Composer.
+You'll also need write access to this repo and be a member of the [Pantheon Project](https://dashboard.pantheon.io/sites/fixme-app-name#dev/code).
 
-See `/web/wp-config.php` for key settings, such as `WP_SITEURL`, which must be updated so that WordPress core functions properly in the relocated `/web/wp` directory. The overall layout of directories in the repo is inspired by, but doesn't exactly mirror, [Bedrock](https://github.com/roots/bedrock).
+### Installation
 
-### `composer.json`
-This project uses Composer to manage third-party PHP dependencies.
+1. Clone the repo
+   `$ git clone https://github.com/Threespot/fixme-app-name.git`
+1. Install application composer dependencies
+   `$ composer install`
+1. Install theme dependencies
+   - Navigate to the theme directory
+     `$ cd web/wp-content/themes/fixme-app-name`
+   - Install composer dependencies
+     `$ composer install`
+   - Install Node dependencies
+     `$ yarn install`
 
-The `require` section of `composer.json` should be used for any dependencies your web project needs, even those that might only be used on non-Live environments. All dependencies in `require` will be pushed to Pantheon. 
+### Boot WordPress Application
 
-The `require-dev` section should be used for dependencies that are not a part of the web application but are necesarry to build or test the project. Some example are `php_codesniffer` and `phpunit`. Dev dependencies will not be deployed to Pantheon.
+After all dependencies are installed, navigate to the project root directory and run:
 
-If you are just browsing this repository on GitHub, you may not see some of the directories mentioned above, such as `web/wp`. That is because WordPress core and its plugins are installed via Composer and ignored in the `.gitignore` file.
+```
+lando start
+```
 
-A custom, [Composer version of WordPress for Pantheon](https://github.com/pantheon-systems/wordpress-composer/) is used as the source for WordPress core.
+If this is the first time running this command, Lando will build the necessary Docker containers.
 
-Third party WordPress dependencies, such as plugins and themes, are added to the project via `composer.json`. The `composer.lock` file keeps track of the exact version of dependency. [Composer `installer-paths`](https://getcomposer.org/doc/faqs/how-do-i-install-a-package-to-a-custom-path-for-my-framework.md#how-do-i-install-a-package-to-a-custom-path-for-my-framework-) are used to ensure the WordPress dependencies are downloaded into the appropriate directory.
+To stop the server run:
 
-Non-WordPress dependencies are downloaded to the `/vendor` directory.
+```
+lando stop
+```
 
-### `.ci`
-This `.ci` directory is where all of the scripts that run on Continuous Integration are stored. Provider specific configuration files, such as `.circle/config.yml` and `.gitlab-ci.yml`, make use of these scripts.
+Other Lando CLI command can be read here in the [Lando docs](https://docs.lando.dev/basics/usage.html)
 
-The scripts are organized into subdirectories of `.ci` according to their function: `build`, `deploy`, or `test`.
+### Boot Theme Server (Webpack)
 
-#### Build Scripts `.ci/build`
-Steps for building an artifact suitable for deployment. Feel free to add other build scripts here, such as installing Node dependencies, depending on your needs.
+Making CSS or JS updates requires running Webpack to recompile and inject the CSS and JS.
 
-- `.ci/build/php` installs PHP dependencies with Composer
+1. Navigate to the theme folder
+   `$ cd /web/wp-content/themes/sage`
 
-#### Build Scripts `.ci/deploy`
-Scripts for facilitating code deployment to Pantheon.
+1. Install npm dependencies using Yarn
+   `$ yarn install`
 
-- `.ci/deploy/pantheon/create-multidev` creates a new [Pantheon multidev environment](https://pantheon.io/docs/multidev/) for branches other than the default Git branch
-  - Note that not all users have multidev access. Please consult [the multidev FAQ doc](https://pantheon.io/docs/multidev-faq/) for details.
-- `.ci/deploy/pantheon/dev-multidev` deploys the built artifact to either the Pantheon `dev` or a multidev environment, depending on the Git branch
+1. Start Webpack
+   `$ yarn start`
 
-#### Automated Test Scripts `.ci/tests`
-Scripts that run automated tests. Feel free to add or remove scripts here depending on your testing needs.
+1. You should now be able to view the site locally at https://localhost:3000
+1. To stop the server, press <kbd>Control</kbd> + <kbd>C</kbd>
 
-#### Github Actions Workflows `.ci/.github`
-This folder should be copied to .github folder in root to enable Github Actions. Also, some secrets need to be added to Github Actions configuration.
+### Pull Files and Database from Pantheon
 
-**Static Testing** `.ci/test/static` and `tests/unit`
-Static tests analyze code without executing it. It is good at detecting syntax error but not functionality.
+Lando is used to pull uploads and data from Pantheon. [See docs here](https://docs.lando.dev/config/pantheon.html#importing-your-database-and-files).
 
-- `.ci/test/static/run` Runs [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) with [WordPress coding standards](https://github.com/WordPress/WordPress-Coding-Standards), PHP Unit, and [PHP syntax checking](https://www.php.net/manual/en/function.php-check-syntax.php).
-- `tests/unit/bootstrap.php` Bootstraps the Composer autoloader
-- `tests/unit/TestAssert.php` An example Unit test. Project specific test files will need to be created in `tests/unit`.
+```
+lando pull --database=test --files=test --code=none
+```
 
-**Visual Regression Testing** `.ci/test/visual-regression`
-Visual regression testing uses a headless browser to take screenshots of web pages and compare them for visual differences.
+## Deploying
 
-- `.ci/test/visual-regression/run` Runs [BackstopJS](https://github.com/garris/BackstopJS) visual regression testing.
-- `.ci/test/visual-regression/backstopConfig.js` The [BackstopJS](https://github.com/garris/BackstopJS) configuration file. Setting here will need to be updated for your project. For example, the `pathsToTest` variable determines the URLs to test.
+Code committed to the remote `master` branch is automatically deployed to the `dev` environment on Pantheon. After a local branch is pushed, CircleCI will build and deploy the files to Pantheon’s dev environment. You can tell CircleCI to not run by adding `[skip ci]` to the commit message.
 
-**Behat Testing** `.ci/test/behat` and `tests/behat`
-[Behat](http://behat.org/en/latest/) is an acceptance/end-to-end testing framework written in PHP. It faciliates testing the fully built WordPress site on Pantheon infrastucture. [WordHat](https://wordhat.info/) is used to help with integrating Behat and WordPress.
+Code that exists on `dev` can be promoted to the `test` environment, and `test` can be promoted to the `live` environment. For more details about the application lifecycle, see https://pantheon.io/agencies/development-workflow/dev-test-live-workflow.
+Feature branches with a corresponding pull request will create a multi-dev environment used for testing individual features. See https://pantheon.io/docs/multidev for documentation.
 
-- `.ci/test/behat/initialize` deletes any existing WordPress user from Behat testing and creates a backup of the environment to be tested
-- `.ci/test/behat/run` sets the `BEHAT_PARAMS` environment variable with dynamic information necessary for Behat and configure it to use wp-cli via [Terminus](https://pantheon.io/docs/terminus/), creates the necessary WordPress user, starts headless Chrome, and runs Behat
-- `.ci/test/behat/cleanup` restores the previously made database backup, deletes the WordPress user used for Behat testing, and saves screenshots taken by Behat
-- `tests/behat/behat-pantheon.yml` Behat configuration file compatible with running tests against a Pantheon site
-- `tests/behat/tests/behat/features` Where Behat test files, with the `.feature` extension, should be stored. The provided example tests will need to be replaced with project specific tests.
-  - `tests/behat/tests/behat/features/visit-homepage.feature` A Behat test file which visits the homepage and verifies a `200` response
-  - `tests/behat/tests/behat/features/admin-login.feature` A Behat test file which logs into the WordPress dashboard as an administrator and verifies acess to new user creation
-  - `tests/behat/tests/behat/features/admin-login.feature` A Behat test file which logs into the WordPress dashboard as an administrator, updates the `blogname` and `blogdescription` settings, clears the Pantheon cache, visits the home page, and verifies the update blog name and description appear.
+### Deployment Using Terminus
 
-## Github Actions
+#### Test Environment
 
-If you need to enable Github Actions for an existing project, you should copy .ci/.github to .github and then add the following secrets to Github Actions configuration:
+Code will be promoted from `dev` to `test`
 
-- ADMIN_EMAIL
-- ADMIN_PASSWORD
-- ADMIN_USERNAME
-- TERMINUS_TOKEN
-- TERMINUS_SITE
-- SSH_PRIVATE_KEY
-- GH_TOKEN
+```shell
+lando composer run-script deploy:test
+```
 
-## Working locally with Lando
-To get started using Lando to develop locally complete these one-time steps. Please note than Lando is an independent product and is not supported by Pantheon. For further assistance please refer to the [Lando documentation](https://docs.devwithlando.io/).
+**NOTE:** this composer script will also purge Pantheon's cache.
 
-* [Install Lando](https://docs.devwithlando.io/installation/system-requirements.html), if not already installed.
-* Clone your project repository from GitHub (or GitLab or BitBucket) locally.
-* Manually create a `.lando.yml` file with your preferred configuration, based on the [WordPress recipe](https://docs.lando.dev/config/wordpress.html#configuration).
-* Run `lando start` to start Lando.
-    - Save the local site URL. It should be similar to `https://<PROJECT_NAME>.lndo.site`.
-* Run `lando composer install --no-ansi --no-interaction --optimize-autoloader --no-progress` to download dependencies
-* Run `lando pull --code=none` to download the media files and database from Pantheon.
-* Visit the local site URL saved from above.
+or
 
-You should now be able to edit your site locally. The steps above do not need to be completed on subsequent starts. You can stop Lando with `lando stop` and start it again with `lando start`.
+```shell
+lando terminus env:deploy fixme-app-name.test
+```
 
-**Warning:** do NOT push/pull code between Lando and Pantheon directly. All code should be pushed to GitHub and deployed to Pantheon through a continuous integration service, such as CircleCI.
+#### Live Environment
 
-Composer, Terminus and wp-cli commands should be run in Lando rather than on the host machine. This is done by prefixing the desired command with `lando`. For example, after a change to `composer.json` run `lando composer update` rather than `composer update`.
+Code will be promoted from `test` to `live`
+
+```shell
+lando composer run-script deploy:live
+```
+
+or
+
+```shell
+lando terminus env:deploy fixme-app-name.live
+```

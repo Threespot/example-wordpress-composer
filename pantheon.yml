@@ -1,10 +1,16 @@
 api_version: 1
 web_docroot: true
-php_version: 8.1
+# Note: Check WP compatibility before upgrading PHP
+# https://docs.pantheon.io/guides/php
+# https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/
+php_version: 8.2
 
 # See https://pantheon.io/docs/pantheon-yml#specify-a-version-of-mariadb
 database:
-  version: 10.4
+  version: 10.6
+
+# See https://docs.pantheon.io/guides/redirect/https/
+enforce_https: full+subdomains
 
 workflows:
   sync_code:

@@ -1,1 +1,4 @@
+# Source: https://github.com/pantheon-systems/wordpress-composer-managed/blob/default/wp-cli.yml
 path: web/wp
+server:
+  docroot: web
