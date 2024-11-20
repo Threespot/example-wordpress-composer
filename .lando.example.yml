@@ -1,0 +1,22 @@
+# NOTE: This file will be auto-generated when creating the app via “terminus build:project:create”
+# https://github.com/Threespot/awesome-threespot/blob/master/docs/frameworks/wordpress/pantheon-wordpress-starter.md
+name: fixme-app-name
+recipe: pantheon
+config:
+  framework: wordpress
+  site: fixme-app-name
+  id: fixme-pantheon-id
+events:
+  pre-start:
+    # Create Acorn cache folder if it doesn’t already exist
+    - mkdir -p web/wp-content/uploads/cache/acorn/framework/cache
+services:
+  appserver:
+    xdebug: debug
+    config:
+      php: .vscode/php.ini
+  mailhog:
+    type: mailhog
+    portforward: true
+    hogfrom:
+      - appserver
