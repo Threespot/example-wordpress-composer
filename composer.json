@@ -91,12 +91,17 @@
       "./vendor/bin/phpunit tests/unit/*"
     ],
     "lint": "find web/wp-content -name '*.php' -exec php -l {} \\;",
-    "deploy:test": "terminus env:deploy fix-me.test && terminus env:clear-cache fix-me.test",
-    "deploy:live": "terminus env:deploy fix-me.live",
-    "deploy:all": "terminus env:deploy fix-me.test && terminus env:clear-cache fix-me.test && terminus env:deploy fix-me.live && terminus env:clear-cache fix-me.live",
+    "deploy:test": "terminus env:deploy fixme-app-name.test && terminus env:clear-cache fixme-app-name.test",
+    "deploy:live": "terminus env:deploy fixme-app-name.live",
+    "deploy:all": "terminus env:deploy fixme-app-name.test && terminus env:clear-cache fixme-app-name.test && terminus env:deploy fixme-app-name.live && terminus env:clear-cache fixme-app-name.live",
     "theme:dev": [
       "Composer\\Config::disableProcessTimeout",
-      "cd web/wp-content/themes/fix-me && yarn dev"
-    ]
+      "cd web/wp-content/themes/sage && yarn dev"
+    ],
+    "theme:build": [
+      "Composer\\Config::disableProcessTimeout",
+      "cd web/wp-content/themes/sage && yarn build"
+    ],    
+    "replace-fixme": "php scripts/composer/ReplaceFixme.php"
   }
 }
