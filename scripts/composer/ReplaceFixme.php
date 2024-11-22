@@ -3,9 +3,9 @@
 // Define the directory to search in and an array of replacements
 $directory = dirname(__DIR__, 2);
 $replacements = [
-    'fixme-app-name' => 'FIXME', // ex: app-name
-    'fixme-project-name' => 'FIXME', // ex: Client Name
-    'fixme-domain' => 'FIXME' // ex: www.clientdomain.org    (do not include the protocal)
+    'fixme-app-name' => 'lfc-wp', // ex: app-name
+    'fixme-project-name' => 'Lever For Change', // ex: Client Name
+    'fixme-domain' => 'https://leverforchange.org' // ex: www.clientdomain.org    (do not include the protocal)
     // Add more pairs as needed
 ];
 
@@ -19,8 +19,17 @@ $excludedDirectories = [
   ".git",
   ".vscode",
   "scripts",
-  "web/wp-content",
-  "tests"
+  "web/wp",
+  "web/wp-content/mu-plugins",
+  "web/wp-content/plugins",
+  "web/wp-content/uploads",
+  "web/wp-content/cache",
+  "web/wp-content/themes/twentytwentyfour",
+  "web/wp/wp-includes", 
+  "tests",
+  "vendor",
+  "web/wp-content/themes/sage/node_modules",
+  "web/wp-content/themes/sage/vendor"
 ];
 
 // Function to recursively get all files in a directory, skipping excluded directories
@@ -34,7 +43,11 @@ function getFiles($dir, $excludedDirectories) {
       foreach ($excludedDirectories as $excludedDir) {
           $excludedPath = dirname(__DIR__, 2) . '/' . $excludedDir;
           if (strpos($filePath, $excludedPath) === 0) {
-              continue 2; // Skip files in this directory
+            // Check if the file is in the excluded directory directly
+            $remainingPath = substr($filePath, strlen($excludedPath));
+            if ($remainingPath === '' || $remainingPath[0] === DIRECTORY_SEPARATOR) {
+                continue 2; // Skip files in this directory
+            }
           }
       }
 
