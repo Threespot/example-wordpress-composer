@@ -2,8 +2,8 @@
 
 ## Outline
 
-- [Pulling Files and Database from Pantheon Test Environment](pulling-files-and-database-from-pantheon-test-environment)
-- [Cache Must Be Present and Writeable](cache-must-be-present-and-writeable)
+- [Pulling Files and Database from Pantheon Test Environment](#pulling-files-and-database-from-pantheon-test-environment)
+- [Cache Must Be Present and Writeable](#cache-must-be-present-and-writeable)
 
 ## Pulling Files and Database from Pantheon Test Environment
 
