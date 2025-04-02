@@ -14,3 +14,9 @@ fi
 if [ -d "web/wp/wp-content" ]; then
   rm -rf web/wp/wp-content
 fi
+
+# Create empty .env in theme folder to prevent the phpdotenv error:
+# “Failed to open stream: No such file or directory”
+if [ ! -f web/wp-content/themes/sage/.env ]; then
+    touch web/wp-content/themes/sage/.env
+fi
