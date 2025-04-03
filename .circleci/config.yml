@@ -35,7 +35,9 @@ defaults: &defaults
     ADMIN_USERNAME: admin
     TERM: dumb
 
-version: 2
+version: 2.1
+orbs:
+  slack: circleci/slack@4.8.3
 jobs:
   configure_env_vars:
     <<: *defaults
@@ -121,6 +123,9 @@ jobs:
           paths:
             - web
             - vendor
+            
+      - slack/notify:
+          event: fail                
 
   build_yarn:
     <<: *defaults
@@ -156,6 +161,9 @@ jobs:
           # Must be relative path from root
           paths:
             - web/wp-content/themes/sage/dist
+            
+      - slack/notify:
+          event: fail                      
 
   deploy_to_pantheon:
     <<: *defaults
@@ -181,6 +189,9 @@ jobs:
       - run:
           name: deploy to Pantheon
           command: ./.ci/deploy/pantheon/dev-multidev
+
+      - slack/notify:
+          event: always          
 
   behat_test:
     <<: *defaults
@@ -275,6 +286,7 @@ workflows:
           context: 
             - acf_license
       - deploy_to_pantheon:
+          context: slack
           requires:
             # - static_tests
             - build_yarn
