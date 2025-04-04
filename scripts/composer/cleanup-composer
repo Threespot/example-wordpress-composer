@@ -17,6 +17,8 @@ fi
 
 # Create empty .env in theme folder to prevent the phpdotenv error:
 # “Failed to open stream: No such file or directory”
-if [ ! -f web/wp-content/themes/hewlett/.env ]; then
-    echo "# Intentionally blank, DO NOT add env vars!" > web/wp-content/themes/hewlett/.env
+if [ -d web/wp-content/themes/sage/ ]; then
+    if [ ! -f web/wp-content/themes/sage/.env ]; then
+        echo "# Intentionally blank, DO NOT add env vars!" > web/wp-content/themes/sage/.env
+    fi
 fi
