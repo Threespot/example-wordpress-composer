@@ -76,6 +76,13 @@ if ( ! isset( $_ENV['PANTHEON_ENVIRONMENT'] ) ):
 	define( 'WP_DEBUG', getenv( 'WP_DEBUG' ) === 'true' ? true : false );
 	define( 'IS_LOCAL', getenv( 'IS_LOCAL' ) !== false ? true : false );
 
+
+	/**
+	 * Set ACF key
+	 * https://support.advancedcustomfields.com/forums/topic/pro-license-key-in-config/#post-150028
+	 */
+	define('ACF_PRO_LICENSE', getenv('ACF_PRO_LICENSE'));
+
 	/**#@+
 	 * Authentication Unique Keys and Salts.
 	 *
@@ -155,6 +162,9 @@ if ( isset( $_ENV['PANTHEON_ENVIRONMENT'] ) ):
 		define( 'WP_HOME', $scheme . '://' . $_SERVER['HTTP_HOST'] );
 		define( 'WP_SITEURL', $scheme . '://' . $_SERVER['HTTP_HOST'] . '/wp' );
 
+	} else {
+		$site_url = getenv('WP_HOME');
+		define('WP_HOME', $site_url);
 	}
 
 	// Force the use of a safe temp directory when in a container
@@ -189,5 +199,43 @@ $table_prefix = getenv( 'DB_PREFIX' ) !== false ? getenv( 'DB_PREFIX' ) : 'wp_';
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 }
+
+if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
+  // Redirect to https://$primary_domain in the Live environment
+  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
+    // FIXME: Uncomment after site goes live
+    // $primary_domain = 'fixme-domain';
+  }
+  else {
+    // Redirect to HTTPS on every Pantheon environment.
+    $primary_domain = $_SERVER['HTTP_HOST'];
+  }
+
+  $requires_redirect = false;
+
+  // Ensure the site is being served from the primary domain.
+  if ($_SERVER['HTTP_HOST'] != $primary_domain) {
+    $requires_redirect = true;
+  }
+
+  // If you're not using HSTS in the pantheon.yml file, uncomment this next block.
+  // if (!isset($_SERVER['HTTP_USER_AGENT_HTTPS'])
+  //     || $_SERVER['HTTP_USER_AGENT_HTTPS'] != 'ON') {
+  //   $requires_redirect = true;
+  // }
+
+  if ($requires_redirect === true) {
+
+    // Name transaction "redirect" in New Relic for improved reporting (optional).
+    if (extension_loaded('newrelic')) {
+      newrelic_name_transaction("redirect");
+    }
+
+    header('HTTP/1.0 301 Moved Permanently');
+    header('Location: https://'. $primary_domain . $_SERVER['REQUEST_URI']);
+    exit();
+  }
+}
+
 /** Sets up WordPress vars and included files. */
 require_once( ABSPATH . 'wp-settings.php' );
