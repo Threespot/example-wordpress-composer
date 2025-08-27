@@ -1,8 +1,4 @@
 <?php
-
-use Tinkerwell\ContextMenu\Label;
-use Tinkerwell\ContextMenu\OpenURL;
-
 class BedrockTinkerwellDriver extends WordpressTinkerwellDriver
 {
     public function canBootstrap($projectPath)
