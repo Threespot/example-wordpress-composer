@@ -49,6 +49,8 @@ web/private/scripts/quicksilver
 !.vscode/*.code-snippets
 auth.json
 .stylelintcache
+logs/*
+!logs/collect-logs-rsync.sh
 # Overrides to keep files
 !web/cache
 !web/wp-content/mu-plugins/bedrock-autoloader.php
