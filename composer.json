@@ -140,6 +140,9 @@
       "Composer\\Config::disableProcessTimeout",
       "cd web/wp-content/themes/sage && yarn build"
     ],
-    "replace-fixme": "php scripts/composer/ReplaceFixme.php"
+    "replace-fixme": "php scripts/composer/ReplaceFixme.php",
+    "collect-logs": [
+      "./logs/collect-logs-rsync.sh"
+    ]
   }
 }
