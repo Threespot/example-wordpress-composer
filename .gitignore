@@ -37,6 +37,7 @@ web/private/scripts/quicksilver
 .bashrc
 
 # Threespot custom rules
+.claude
 .env
 *.env
 .env.*
