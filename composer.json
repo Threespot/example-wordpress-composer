@@ -4,6 +4,10 @@
   "type": "project",
   "keywords": [],
   "repositories": [
+		{
+			"type": "composer",
+			"url": "https://objectcache.pro/repo/"
+		},
     {
       "type": "composer",
       "url": "https://wpackagist.org",
@@ -17,12 +21,13 @@
       "url": "https://connect.advancedcustomfields.com"
     },
     {
-      "type": "vcs",
-      "url": "https://github.com/pantheon-systems/wordpress-composer"
+        "type": "composer",
+        "url": "https://composer.admincolumns.com"
     }
   ],
   "require": {
     "php": ">=8.3",
+    "admin-columns/admin-columns-pro": "^7.0.11",
     "composer/installers": "^2.3.0",
     "filp/whoops": "^2.14",
     "johnbillion/extended-cpts": "^5.0.0",
@@ -30,14 +35,16 @@
     "oscarotero/env": "^2.1",
     "pantheon-systems/pantheon-mu-plugin": "^1.5",
     "pantheon-systems/quicksilver-pushback": "^2.0",
-    "roots/acorn": "^5.0",
+    "rhubarbgroup/object-cache-pro": "^1.25.0",
+    "roots/acorn": "^6.0",
     "roots/acorn-prettify": "^1.0.1",
     "roots/bedrock-autoloader": "^1.0",
     "roots/bedrock-disallow-indexing": "^2.0",
-    "roots/wordpress": "~6.8.0",
+    "roots/wordpress": "~6.9.4",
     "roots/wp-config": "^1.0.0",
     "vlucas/phpdotenv": "^5.4",
     "wpackagist-plugin/admin-menu-editor": "^1.12.4",
+    "wpackagist-plugin/better-image-sizes": "^3.8.0",
     "wpackagist-plugin/block-manager": "^3.0",
     "wpackagist-plugin/disable-embeds": "^1.5",
     "wpackagist-plugin/disable-emojis": "^1.7",
@@ -48,21 +55,21 @@
     "wpackagist-plugin/pantheon-advanced-page-cache": "^2.0",
     "wpackagist-plugin/pantheon-hud": "^0.4.3",
     "wpackagist-plugin/post-type-switcher": "^4.0.0",
-    "wpackagist-plugin/publishpress-checklists": "^2.21.1",
     "wpackagist-plugin/query-monitor": "^3.16.4",
     "wpackagist-plugin/redirection": "^5.5.0",
     "wpackagist-plugin/resize-image-after-upload": "^1.8.6",
     "wpackagist-plugin/safe-svg": "^2.2.5",
     "wpackagist-plugin/simple-custom-post-order": "^2.5.7",
-    "wpackagist-plugin/wordpress-seo": "^25.3.1",
+    "wpackagist-plugin/term-management-tools": "^2.0.2",
+    "wpackagist-plugin/user-switching": "^1.11.0",
+    "wpackagist-plugin/wordpress-seo": "^27.0.0",
     "wpackagist-plugin/wp-crontrol": "^1.18",
-    "wpackagist-plugin/wp-mail-smtp": "^4.4.0",
     "wpackagist-plugin/wp-native-php-sessions": "^1.2",
+    "wpackagist-plugin/wp-security-audit-log": "^5.5.3",
     "wpackagist-theme/twentytwentyfive": "^1.2",
-    "wpengine/advanced-custom-fields-pro": "~6.5.0"
+    "wpengine/advanced-custom-fields-pro": "~6.7.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^4.0.1",
     "roave/security-advisories": "dev-latest"
   },
   "config": {
@@ -98,12 +105,13 @@
   "autoload": {
     "classmap": [
       "scripts/composer/ScriptHandler.php"
-    ]
+    ],
+    "psr-4": { "PantheonSystems\\WordHatHelpers\\": "tests/behat/helper_classes/" }
   },
   "scripts": {
     "build-assets": [
       "@prepare-for-pantheon",
-      "composer install --no-dev --no-ansi --no-interaction --optimize-autoloader --no-progress"
+      "composer install --ignore-platform-req=ext-redis --no-dev --no-ansi --no-interaction --optimize-autoloader --no-progress"
     ],
     "prepare-for-pantheon": "WordPressProject\\composer\\ScriptHandler::prepareForPantheon",
     "cleanup": [
@@ -133,7 +141,7 @@
     "deploy:all": "terminus env:deploy fixme-app-name.test && terminus env:clear-cache fixme-app-name.test && terminus env:deploy fixme-app-name.live && terminus env:clear-cache fixme-app-name.live",
     "theme:dev": [
       "Composer\\Config::disableProcessTimeout",
-      "cd web/wp-content/themes/sage && yarn dev"
+      "cd web/wp-content/themes/sage && yarn start"
     ],
     "theme:build": [
       "Composer\\Config::disableProcessTimeout",
