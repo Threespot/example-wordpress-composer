@@ -1,0 +1,32 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 5
+
+    paths:
+        - web/wp-content/mu-plugins/loader.php
+        - web/wp-content/themes/sage/app
+        - web/wp-content/themes/sage/config
+        - web/wp-content/themes/sage/functions.php
+        - web/wp-content/themes/sage/index.php
+
+    # Loads the Sage theme's composer autoloader so PHPStan can resolve
+    # Acorn (Roots\Acorn\*) and Laravel (Illuminate\*) types.
+    # Prerequisite: run `composer install` inside web/wp-content/themes/sage/
+    # before running phpstan. CI does this automatically in .ci/test/static/run.
+    bootstrapFiles:
+        - web/wp-content/themes/sage/vendor/autoload.php
+
+    # ACF Pro stubs so get_field(), the_field(), have_rows() etc. resolve.
+    scanFiles:
+        - vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
+
+    excludePaths:
+        - web/wp/*
+        - web/wp-content/plugins/*
+        - web/wp-content/themes/twentytwentyfive/*
+        - vendor/*
+
+    # WordPress is loosely typed. Don't fail on PHPDoc types we can't fully trust.
+    treatPhpDocTypesAsCertain: false

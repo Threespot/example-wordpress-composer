@@ -70,7 +70,11 @@
     "wpengine/advanced-custom-fields-pro": "~6.7.0"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-latest"
+    "php-stubs/acf-pro-stubs": "^6.0",
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^2.1",
+    "roave/security-advisories": "dev-latest",
+    "szepeviktor/phpstan-wordpress": "^2.0"
   },
   "config": {
     "vendor-dir": "vendor",
@@ -82,8 +86,8 @@
     },
     "allow-plugins": {
       "composer/installers": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true,
       "johnpbloch/wordpress-core-installer": true,
+      "phpstan/extension-installer": true,
       "roots/wordpress-core-installer": true
     }
   },
@@ -129,8 +133,8 @@
       "@cleanup",
       "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
     ],
-    "code-sniff": [
-      "./vendor/bin/phpcs --standard=WordPress ./web/wp-content"
+    "phpstan": [
+      "./vendor/bin/phpstan analyse --memory-limit=1G"
     ],
     "unit-test": [
       "./vendor/bin/phpunit tests/unit/*"

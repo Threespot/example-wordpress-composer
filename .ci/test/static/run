@@ -6,14 +6,9 @@ set -eo pipefail
 # This script runs static tests which
 # can be performed without code execution.
 #
-# Some example are code sniffing and unit testing
-#
 
 # Run composer install to get the vendor directory
 composer install --no-ansi --no-interaction --optimize-autoloader --no-progress
-
-# Run unit tests
-composer -n unit-test
 
 # Delete and reset the web directory
 # This is necessary so that third-party
@@ -23,5 +18,12 @@ git clean -fdX web
 # Lint php code for syntax errors
 composer -n lint
 
-# Check coding standards
-composer -n code-sniff
+# Install the Sage theme's composer dependencies so PHPStan can resolve
+# Acorn / Illuminate types. Skipped if the theme isn't present yet.
+if [ -f web/wp-content/themes/sage/composer.json ]; then
+    (cd web/wp-content/themes/sage && \
+        composer install --ignore-platform-req=ext-redis --no-dev --no-ansi --no-interaction --no-progress)
+fi
+
+# Static analysis (PHPStan + szepeviktor/phpstan-wordpress)
+composer -n phpstan

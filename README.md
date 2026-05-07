@@ -69,7 +69,7 @@ This folder should be copied to .github folder in root to enable Github Actions.
 **Static Testing** `.ci/test/static` and `tests/unit`
 Static tests analyze code without executing it. It is good at detecting syntax error but not functionality.
 
-- `.ci/test/static/run` Runs [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) with [WordPress coding standards](https://github.com/WordPress/WordPress-Coding-Standards), PHP Unit, and [PHP syntax checking](https://www.php.net/manual/en/function.php-check-syntax.php).
+- `.ci/test/static/run` Runs [PHPStan](https://phpstan.org/) static analysis (via [`szepeviktor/phpstan-wordpress`](https://github.com/szepeviktor/phpstan-wordpress)) and [PHP syntax checking](https://www.php.net/manual/en/function.php-check-syntax.php). See [Static Analysis](#static-analysis-phpstan) below for usage.
 - `tests/unit/bootstrap.php` Bootstraps the Composer autoloader
 - `tests/unit/TestAssert.php` An example Unit test. Project specific test files will need to be created in `tests/unit`.
 
@@ -90,6 +90,50 @@ If you need to enable Github Actions for an existing project, you should copy .c
 - TERMINUS_SITE
 - SSH_PRIVATE_KEY
 - GH_TOKEN
+
+## Static Analysis (PHPStan)
+
+This project uses [PHPStan](https://phpstan.org/) with the [`szepeviktor/phpstan-wordpress`](https://github.com/szepeviktor/phpstan-wordpress) extension and [`php-stubs/acf-pro-stubs`](https://github.com/php-stubs/acf-pro-stubs) to catch type-related bugs (null dereferences, wrong argument types, hook callback signature mismatches, missing array keys, etc.) without running the code.
+
+Configuration lives in `phpstan.neon.dist`. Existing findings are deferred via `phpstan-baseline.neon` so new code is held to the level-5 bar without blocking on legacy issues.
+
+PHPStan runs in CI on every push via the `static_tests` job in `.circleci/config.yml`, and `deploy_to_pantheon` is gated on it — failures block deploys.
+
+### Running locally
+
+PHPStan needs the Sage theme's composer dependencies installed so it can resolve Acorn (`Roots\Acorn\*`) and Laravel (`Illuminate\*`) types.
+
+```bash
+# One-time: install root dev dependencies
+composer install --ignore-platform-req=ext-redis
+
+# One-time (and after pulling theme dep changes): install Sage's deps
+(cd web/wp-content/themes/sage && composer install --ignore-platform-req=ext-redis)
+
+# Run the analyzer
+composer phpstan
+```
+
+### What's analyzed
+
+- `web/wp-content/mu-plugins/loader.php`
+- `web/wp-content/themes/sage/{app,config,functions.php,index.php}`
+
+WordPress core, third-party plugins, the bundled `twentytwentyfive` theme, and Blade view files (`resources/views/`) are excluded. To analyze additional custom code (e.g. a new mu-plugin), add its path under `parameters.paths:` in `phpstan.neon.dist`.
+
+### Updating the baseline
+
+When introducing legitimate findings you want to defer rather than fix immediately, regenerate the baseline:
+
+```bash
+./vendor/bin/phpstan analyse --memory-limit=1G --generate-baseline
+```
+
+Commit the updated `phpstan-baseline.neon`. Aim to shrink it over time, not grow it.
+
+### Adjusting strictness
+
+Level is set in `phpstan.neon.dist` (currently `5`, on a 0–9 scale). Raise it once the baseline is empty.
 
 ## Working locally with Lando
 To get started using Lando to develop locally complete these one-time steps. Please note than Lando is an independent product and is not supported by Pantheon. For further assistance please refer to the [Lando documentation](https://docs.devwithlando.io/).

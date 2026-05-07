@@ -234,14 +234,14 @@ workflows:
   build_deploy_and_test:
     jobs:
       - configure_env_vars
-      # - static_tests
+      - static_tests
       - build_yarn
       - build_php:
           context:
             - plugin_keys
       - deploy_to_pantheon:
           requires:
-            # - static_tests
+            - static_tests
             - build_yarn
             - build_php
       # - visual_regression_test:

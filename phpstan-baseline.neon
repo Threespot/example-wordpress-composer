@@ -1,0 +1,7 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Found usage of constant WP_INSTALLING\. Use wp_installing\(\) instead\.$#'
+			identifier: phpstanWP.wpConstant.fetch
+			count: 1
+			path: web/wp-content/mu-plugins/loader.php
