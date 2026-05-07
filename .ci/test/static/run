@@ -25,5 +25,13 @@ if [ -f web/wp-content/themes/sage/composer.json ]; then
         composer install --ignore-platform-req=ext-redis --no-dev --no-ansi --no-interaction --no-progress)
 fi
 
+# Coding standards (Pantheon-WP-Minimum via pantheon-systems/pantheon-wp-coding-standards).
+# phpcs.xml.dist scans loader.php and the Sage theme; skip when Sage isn't present yet.
+if [ -d web/wp-content/themes/sage/app ]; then
+    composer -n phpcs
+else
+    echo "Skipping phpcs: web/wp-content/themes/sage/app not present."
+fi
+
 # Static analysis (PHPStan + szepeviktor/phpstan-wordpress)
 composer -n phpstan

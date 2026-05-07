@@ -29,6 +29,7 @@
     "php": ">=8.3",
     "admin-columns/admin-columns-pro": "^7.0.11",
     "composer/installers": "^2.3.0",
+    "cweagans/composer-patches": "^1.7",
     "filp/whoops": "^2.14",
     "johnbillion/extended-cpts": "^5.0.0",
     "log1x/navi": "^3.0.2",
@@ -70,6 +71,8 @@
     "wpengine/advanced-custom-fields-pro": "~6.7.0"
   },
   "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "pantheon-systems/pantheon-wp-coding-standards": "^3.0",
     "php-stubs/acf-pro-stubs": "^6.0",
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan": "^2.1",
@@ -86,12 +89,15 @@
     },
     "allow-plugins": {
       "composer/installers": true,
+      "cweagans/composer-patches": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
       "johnpbloch/wordpress-core-installer": true,
       "phpstan/extension-installer": true,
       "roots/wordpress-core-installer": true
     }
   },
   "extra": {
+    "enable-patching": true,
     "wordpress-install-dir": "web/wp",
     "build-env": {
       "install-cms": [
@@ -135,6 +141,12 @@
     ],
     "phpstan": [
       "./vendor/bin/phpstan analyse --memory-limit=1G"
+    ],
+    "phpcs": [
+      "./vendor/bin/phpcs"
+    ],
+    "phpcbf": [
+      "./vendor/bin/phpcbf"
     ],
     "unit-test": [
       "./vendor/bin/phpunit tests/unit/*"
