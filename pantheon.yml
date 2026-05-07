@@ -1,10 +1,15 @@
 api_version: 1
 web_docroot: true
-php_version: 8.2
+php_version: 8.3
+enforce_https: full+subdomains
 
 # See https://pantheon.io/docs/pantheon-yml#specify-a-version-of-mariadb
 database:
-  version: 10.4
+  version: 10.6
+
+# Redis https://docs.pantheon.io/object-cache/wordpress
+object_cache:
+  version: 6.2
 
 workflows:
   sync_code:
