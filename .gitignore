@@ -58,16 +58,31 @@ logs/*
 !web/wp-content/mu-plugins/loader.php
 !web/wp-content/mu-plugins/custom-post-types
 !web/wp-content/mu-plugins/custom-taxonomies
+!web/wp-content/mu-plugins/disable-polylang-cookie.php
 !web/wp-content/object-cache.php
 # Include any plugins not loaded via composer
 !web/wp-content/plugins/acf-extended-pro
 !web/wp-content/plugins/facetwp*
-!web/wp-content/plugins/fly-dynamic-image-resizer
-!web/wp-content/plugins/gravityforms*
+!web/wp-content/plugins/polylang-pro
 !web/wp-content/plugins/searchwp*
+# WP All Import/Export
 !web/wp-content/plugins/wp-all-*
 !web/wp-content/plugins/wpae*
 !web/wp-content/plugins/wpai*
+# Gravity Forms
+!web/wp-content/plugins/gp-populate-anything
+!web/wp-content/plugins/gravityforms*
+!web/wp-content/plugins/spellbook
+# The Events Calendar
+!web/wp-content/plugins/events-calendar-pro
+!web/wp-content/plugins/the-events-calendar-*
+# PublishPress plugins
+!web/wp-content/plugins/advanced-gutenberg-pro
+!web/wp-content/plugins/capabilities-pro
+!web/wp-content/plugins/presspermit-pro
+!web/wp-content/plugins/publishpress*
+!web/wp-content/plugins/revisionary-pro
+# Theme
 !web/wp-content/themes/sage
 !web/wp-content/uploads/cache/acorn/framework/cache/.gitkeep
 
