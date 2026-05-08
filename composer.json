@@ -85,7 +85,8 @@
     "optimize-autoloader": true,
     "sort-packages": true,
     "platform": {
-      "php": "8.3"
+      "php": "8.3",
+      "ext-redis": "5.3.7"
     },
     "allow-plugins": {
       "composer/installers": true,
