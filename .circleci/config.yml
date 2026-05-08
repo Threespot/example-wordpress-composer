@@ -234,7 +234,9 @@ workflows:
   build_deploy_and_test:
     jobs:
       - configure_env_vars
-      - static_tests
+      - static_tests:
+          context:
+            - plugin_keys
       - build_yarn
       - build_php:
           context:
@@ -266,4 +268,6 @@ workflows:
   #             only:
   #               - master
   #   jobs:
-  #     - composer_lock_updater
+  #     - composer_lock_updater:
+  #         context:
+  #           - plugin_keys
