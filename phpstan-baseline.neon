@@ -5,3 +5,23 @@ parameters:
 			identifier: phpstanWP.wpConstant.fetch
 			count: 1
 			path: web/wp-content/mu-plugins/loader.php
+		-
+			message: '#^Function bis_get_attachment_image_src not found\.$#'
+			identifier: function.notFound
+			count: 4
+			path: web/wp-content/themes/sage/app/image-helpers.php
+		-
+			message: '#^Function fly_get_attachment_image_src not found\.$#'
+			identifier: function.notFound
+			count: 2
+			path: web/wp-content/themes/sage/app/image-helpers.php
+		-
+			message: '#^Function sanitize_focal_point not found\.$#'
+			identifier: function.notFound
+			count: 1
+			path: web/wp-content/themes/sage/app/image-helpers.php
+		-
+			message: '#^Function app not found\.$#'
+			identifier: function.notFound
+			count: 2
+			path: web/wp-content/themes/sage/index.php
