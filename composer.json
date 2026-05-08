@@ -2,6 +2,7 @@
   "name": "threespot/example-wordpress-composer",
   "description": "Terminus build tools template for a Pantheon Composer WordPress application",
   "type": "project",
+  "license": "proprietary",
   "keywords": [],
   "repositories": [
 		{
@@ -122,7 +123,7 @@
   "scripts": {
     "build-assets": [
       "@prepare-for-pantheon",
-      "composer install --ignore-platform-req=ext-redis --no-dev --no-ansi --no-interaction --optimize-autoloader --no-progress"
+      "composer install --ignore-platform-req=ext-redis --no-dev --no-ansi --no-interaction --optimize-autoloader --no-progress --prefer-dist"
     ],
     "prepare-for-pantheon": "WordPressProject\\composer\\ScriptHandler::prepareForPantheon",
     "cleanup": [

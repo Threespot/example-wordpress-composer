@@ -111,7 +111,7 @@ jobs:
           name: install theme composer dependencies
           # Note: Add `--ignore-platform-req=ext-redis` for sites using Object Cache Pro
           #       https://docs.pantheon.io/object-cache/wordpress
-          command: cd web/wp-content/themes/sage && composer install --ignore-platform-req=ext-redis --no-interaction --optimize-autoloader
+          command: cd web/wp-content/themes/sage && composer install --ignore-platform-req=ext-redis --no-interaction --optimize-autoloader --prefer-dist
 
       - save_cache:
           key: vendor-{{ checksum "composer.lock" }}

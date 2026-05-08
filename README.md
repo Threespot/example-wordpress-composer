@@ -105,10 +105,10 @@ PHPStan needs the Sage theme's composer dependencies installed so it can resolve
 
 ```bash
 # One-time: install root dev dependencies
-composer install --ignore-platform-req=ext-redis
+composer install --no-interaction --prefer-dist
 
 # One-time (and after pulling theme dep changes): install Sage's deps
-(cd web/wp-content/themes/sage && composer install --ignore-platform-req=ext-redis)
+cd web/wp-content/themes/sage && composer install --no-interaction --prefer-dist
 
 # Run the analyzer
 composer phpstan
