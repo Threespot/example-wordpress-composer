@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b571315e90e04d6acd9f41f2c75ebb8b",
+    "content-hash": "93a0c64e42a2238805467fc0a48e7a24",
     "packages": [
         {
             "name": "admin-columns/admin-columns-pro",
@@ -4853,11 +4853,11 @@
         },
         {
             "name": "rhubarbgroup/object-cache-pro",
-            "version": "v1.25.4",
+            "version": "v1.25.5",
             "dist": {
                 "type": "zip",
-                "url": "https://objectcache.pro/plugin/object-cache-pro-1.25.4.zip?token=dd9cc75fa72816fe69f8b3ccc7b8f68ab6043278921d52c3a7990c67aae3",
-                "reference": "5c5ab1c0b20eca90182fd5d12e1e4d4586360c41"
+                "url": "https://objectcache.pro/plugin/object-cache-pro-1.25.5.zip?token=dd9cc75fa72816fe69f8b3ccc7b8f68ab6043278921d52c3a7990c67aae3",
+                "reference": "8a74cf625caa311254ad23067bde5993e41a3e20"
             },
             "require": {
                 "composer/installers": "~1.0 || ~2.0",
@@ -4893,7 +4893,7 @@
             ],
             "description": "A business class Redis object cache backend for WordPress.",
             "homepage": "https://objectcache.pro",
-            "time": "2026-04-22T15:50:11+00:00"
+            "time": "2026-05-08T19:12:31+00:00"
         },
         {
             "name": "roots/acorn",
@@ -7921,7 +7921,7 @@
             "time": "2026-04-26T05:33:54+00:00"
         },
         {
-            "name": "wpackagist-plugin/admin-menu-editor",
+            "name": "wp-plugin/admin-menu-editor",
             "version": "1.15",
             "source": {
                 "type": "svn",
@@ -7933,13 +7933,26 @@
                 "url": "https://downloads.wordpress.org/plugin/admin-menu-editor.1.15.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/admin-menu-editor/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Janis Elsts"
+                }
+            ],
+            "description": "Lets you edit the WordPress admin menu. You can re-order, hide or rename menus, add custom menus and more.",
+            "homepage": "http://w-shadow.com/blog/2008/12/20/admin-menu-editor-for-wordpress/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/admin-menu-editor/#developers",
+                "issues": "https://wordpress.org/support/plugin/admin-menu-editor",
+                "source": "https://plugins.svn.wordpress.org/admin-menu-editor"
+            },
+            "time": "2026-05-05T09:46:35+00:00"
         },
         {
-            "name": "wpackagist-plugin/better-image-sizes",
+            "name": "wp-plugin/better-image-sizes",
             "version": "3.9",
             "source": {
                 "type": "svn",
@@ -7951,13 +7964,26 @@
                 "url": "https://downloads.wordpress.org/plugin/better-image-sizes.3.9.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/better-image-sizes/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "kubiq"
+                }
+            ],
+            "description": "Dynamically generate only needed image sizes for only needed images, with manually selected focal point for crops",
+            "homepage": "https://wp-speedup.eu",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/better-image-sizes/#developers",
+                "issues": "https://wordpress.org/support/plugin/better-image-sizes",
+                "source": "https://plugins.svn.wordpress.org/better-image-sizes"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/block-manager",
+            "name": "wp-plugin/block-manager",
             "version": "3.2.0",
             "source": {
                 "type": "svn",
@@ -7969,13 +7995,26 @@
                 "url": "https://downloads.wordpress.org/plugin/block-manager.3.2.0.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/block-manager/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Darren Cooney"
+                }
+            ],
+            "description": "Disable unwanted blocks and patterns, organize blocks by changing categories - complete control over your WordPress Block Editor experience.",
+            "homepage": "https://connekthq.com/plugins/block-manager/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/block-manager/#developers",
+                "issues": "https://wordpress.org/support/plugin/block-manager",
+                "source": "https://plugins.svn.wordpress.org/block-manager"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/disable-embeds",
+            "name": "wp-plugin/disable-embeds",
             "version": "1.5.0",
             "source": {
                 "type": "svn",
@@ -7987,13 +8026,25 @@
                 "url": "https://downloads.wordpress.org/plugin/disable-embeds.1.5.0.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/disable-embeds/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Pascal Birchler"
+                }
+            ],
+            "description": "Don’t like the enhanced embeds in WordPress 4.4? Easily disable the feature using this plugin.",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/disable-embeds/#developers",
+                "issues": "https://wordpress.org/support/plugin/disable-embeds",
+                "source": "https://plugins.svn.wordpress.org/disable-embeds"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/disable-emojis",
+            "name": "wp-plugin/disable-emojis",
             "version": "1.9",
             "source": {
                 "type": "svn",
@@ -8005,13 +8056,26 @@
                 "url": "https://downloads.wordpress.org/plugin/disable-emojis.1.9.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/disable-emojis/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Ryan Hellyer"
+                }
+            ],
+            "description": "Disable the WordPress emoji functionality to improve performance and privacy.",
+            "homepage": "https://geek.hellyer.kiwi/plugins/disable-emojis/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/disable-emojis/#developers",
+                "issues": "https://wordpress.org/support/plugin/disable-emojis",
+                "source": "https://plugins.svn.wordpress.org/disable-emojis"
+            },
+            "time": "2026-05-06T20:11:17+00:00"
         },
         {
-            "name": "wpackagist-plugin/duplicate-post",
+            "name": "wp-plugin/duplicate-post",
             "version": "4.6",
             "source": {
                 "type": "svn",
@@ -8023,13 +8087,26 @@
                 "url": "https://downloads.wordpress.org/plugin/duplicate-post.4.6.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/duplicate-post/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Yoast"
+                }
+            ],
+            "description": "The go-to tool for cloning posts and pages, including the powerful Rewrite & Republish feature.",
+            "homepage": "https://yoast.com/wordpress/plugins/duplicate-post/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/duplicate-post/#developers",
+                "issues": "https://wordpress.org/support/plugin/duplicate-post",
+                "source": "https://plugins.svn.wordpress.org/duplicate-post"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/enable-media-replace",
+            "name": "wp-plugin/enable-media-replace",
             "version": "4.1.9",
             "source": {
                 "type": "svn",
@@ -8041,13 +8118,26 @@
                 "url": "https://downloads.wordpress.org/plugin/enable-media-replace.4.1.9.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/enable-media-replace/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "ShortPixel"
+                }
+            ],
+            "description": "Easily replace any attached image/file by simply uploading a new file in the Media Library edit view - a real time saver!",
+            "homepage": "https://shortpixel.com",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/enable-media-replace/#developers",
+                "issues": "https://wordpress.org/support/plugin/enable-media-replace",
+                "source": "https://plugins.svn.wordpress.org/enable-media-replace"
+            },
+            "time": "2026-04-22T16:35:59+00:00"
         },
         {
-            "name": "wpackagist-plugin/favicon-by-realfavicongenerator",
+            "name": "wp-plugin/favicon-by-realfavicongenerator",
             "version": "1.3.46",
             "source": {
                 "type": "svn",
@@ -8059,13 +8149,26 @@
                 "url": "https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.1.3.46.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/favicon-by-realfavicongenerator/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "phbernard"
+                }
+            ],
+            "description": "Create and install your favicon for all platforms: PC/Mac, iPhone/iPad, Android devices, Windows 8 tablets...",
+            "homepage": "http://realfavicongenerator.net/extensions/wordpress",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/favicon-by-realfavicongenerator/#developers",
+                "issues": "https://wordpress.org/support/plugin/favicon-by-realfavicongenerator",
+                "source": "https://plugins.svn.wordpress.org/favicon-by-realfavicongenerator"
+            },
+            "time": "2026-05-08T21:01:44+00:00"
         },
         {
-            "name": "wpackagist-plugin/filebird",
+            "name": "wp-plugin/filebird",
             "version": "6.5.2",
             "source": {
                 "type": "svn",
@@ -8077,13 +8180,26 @@
                 "url": "https://downloads.wordpress.org/plugin/filebird.6.5.2.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/filebird/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Ninja Team"
+                }
+            ],
+            "description": "Organize thousands of WordPress media files in folders / categories with ease.",
+            "homepage": "https://ninjateam.org/wordpress-media-library-folders/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/filebird/#developers",
+                "issues": "https://wordpress.org/support/plugin/filebird",
+                "source": "https://plugins.svn.wordpress.org/filebird"
+            },
+            "time": "2026-04-10T16:00:53+00:00"
         },
         {
-            "name": "wpackagist-plugin/pantheon-advanced-page-cache",
+            "name": "wp-plugin/pantheon-advanced-page-cache",
             "version": "2.1.2",
             "source": {
                 "type": "svn",
@@ -8095,13 +8211,26 @@
                 "url": "https://downloads.wordpress.org/plugin/pantheon-advanced-page-cache.2.1.2.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/pantheon-advanced-page-cache/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Pantheon Systems"
+                }
+            ],
+            "description": "Automatically clear related pages from Pantheon's Edge when you update content. High TTL. Fresh content. Visitors never wait.",
+            "homepage": "https://wordpress.org/plugins/pantheon-advanced-page-cache/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/pantheon-advanced-page-cache/#developers",
+                "issues": "https://wordpress.org/support/plugin/pantheon-advanced-page-cache",
+                "source": "https://plugins.svn.wordpress.org/pantheon-advanced-page-cache"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/pantheon-hud",
+            "name": "wp-plugin/pantheon-hud",
             "version": "0.4.5",
             "source": {
                 "type": "svn",
@@ -8113,13 +8242,26 @@
                 "url": "https://downloads.wordpress.org/plugin/pantheon-hud.0.4.5.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/pantheon-hud/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Pantheon Systems"
+                }
+            ],
+            "description": "A heads-up display into your Pantheon environment.",
+            "homepage": "https://pantheon.io",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/pantheon-hud/#developers",
+                "issues": "https://wordpress.org/support/plugin/pantheon-hud",
+                "source": "https://plugins.svn.wordpress.org/pantheon-hud"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/post-type-switcher",
+            "name": "wp-plugin/post-type-switcher",
             "version": "4.0.1",
             "source": {
                 "type": "svn",
@@ -8131,13 +8273,26 @@
                 "url": "https://downloads.wordpress.org/plugin/post-type-switcher.4.0.1.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/post-type-switcher/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "John James Jacoby"
+                }
+            ],
+            "description": "A simple way to change a post's type in WordPress",
+            "homepage": "https://wordpress.org/plugins/post-type-switcher/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/post-type-switcher/#developers",
+                "issues": "https://wordpress.org/support/plugin/post-type-switcher",
+                "source": "https://plugins.svn.wordpress.org/post-type-switcher"
+            },
+            "time": "2026-03-24T16:51:13+00:00"
         },
         {
-            "name": "wpackagist-plugin/query-monitor",
+            "name": "wp-plugin/query-monitor",
             "version": "4.0.6",
             "source": {
                 "type": "svn",
@@ -8149,13 +8304,26 @@
                 "url": "https://downloads.wordpress.org/plugin/query-monitor.4.0.6.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/query-monitor/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "John Blackbourn"
+                }
+            ],
+            "description": "Query Monitor is the developer tools panel for WordPress and WooCommerce.",
+            "homepage": "https://querymonitor.com/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/query-monitor/#developers",
+                "issues": "https://wordpress.org/support/plugin/query-monitor",
+                "source": "https://plugins.svn.wordpress.org/query-monitor"
+            },
+            "time": "2026-04-11T11:56:17+00:00"
         },
         {
-            "name": "wpackagist-plugin/redirection",
+            "name": "wp-plugin/redirection",
             "version": "5.7.5",
             "source": {
                 "type": "svn",
@@ -8167,13 +8335,26 @@
                 "url": "https://downloads.wordpress.org/plugin/redirection.5.7.5.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/redirection/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "John Godley"
+                }
+            ],
+            "description": "Manage 301 redirects, track 404 errors, and improve your site. No knowledge of Apache or Nginx required.",
+            "homepage": "https://redirection.me/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/redirection/#developers",
+                "issues": "https://wordpress.org/support/plugin/redirection",
+                "source": "https://plugins.svn.wordpress.org/redirection"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/resize-image-after-upload",
+            "name": "wp-plugin/resize-image-after-upload",
             "version": "1.8.6",
             "source": {
                 "type": "svn",
@@ -8185,13 +8366,26 @@
                 "url": "https://downloads.wordpress.org/plugin/resize-image-after-upload.1.8.6.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/resize-image-after-upload/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "ShortPixel"
+                }
+            ],
+            "description": "Automatically resize your images after uploading using this plugin. Specify height&width, the plugin will do the rest quickly and transparently.",
+            "homepage": "https://wordpress.org/plugins/resize-image-after-upload/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/resize-image-after-upload/#developers",
+                "issues": "https://wordpress.org/support/plugin/resize-image-after-upload",
+                "source": "https://plugins.svn.wordpress.org/resize-image-after-upload"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/safe-svg",
+            "name": "wp-plugin/safe-svg",
             "version": "2.4.0",
             "source": {
                 "type": "svn",
@@ -8203,13 +8397,26 @@
                 "url": "https://downloads.wordpress.org/plugin/safe-svg.2.4.0.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/safe-svg/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "10up"
+                }
+            ],
+            "description": "Enable SVG uploads and sanitize them to stop XML/SVG vulnerabilities in your WordPress website.",
+            "homepage": "https://wordpress.org/plugins/safe-svg/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/safe-svg/#developers",
+                "issues": "https://wordpress.org/support/plugin/safe-svg",
+                "source": "https://plugins.svn.wordpress.org/safe-svg"
+            },
+            "time": "2026-04-14T13:36:11+00:00"
         },
         {
-            "name": "wpackagist-plugin/simple-custom-post-order",
+            "name": "wp-plugin/simple-custom-post-order",
             "version": "2.6.0",
             "source": {
                 "type": "svn",
@@ -8221,13 +8428,26 @@
                 "url": "https://downloads.wordpress.org/plugin/simple-custom-post-order.2.6.0.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/simple-custom-post-order/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "colorlibplugins"
+                }
+            ],
+            "description": "Easily reorder posts, pages, custom post types, and taxonomies with intuitive drag-and-drop sorting in the WordPress admin.",
+            "homepage": "https://wordpress.org/plugins-wp/simple-custom-post-order/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/simple-custom-post-order/#developers",
+                "issues": "https://wordpress.org/support/plugin/simple-custom-post-order",
+                "source": "https://plugins.svn.wordpress.org/simple-custom-post-order"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/term-management-tools",
+            "name": "wp-plugin/term-management-tools",
             "version": "2.0.2",
             "source": {
                 "type": "svn",
@@ -8239,13 +8459,26 @@
                 "url": "https://downloads.wordpress.org/plugin/term-management-tools.2.0.2.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/term-management-tools/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "scribu"
+                }
+            ],
+            "description": "Allows you to merge terms, move terms between taxonomies, and set term parents, individually or in bulk.",
+            "homepage": "https://www.codenamemiked.com/plugins/term-management-tools/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/term-management-tools/#developers",
+                "issues": "https://wordpress.org/support/plugin/term-management-tools",
+                "source": "https://plugins.svn.wordpress.org/term-management-tools"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/user-switching",
+            "name": "wp-plugin/user-switching",
             "version": "1.11.2",
             "source": {
                 "type": "svn",
@@ -8257,13 +8490,26 @@
                 "url": "https://downloads.wordpress.org/plugin/user-switching.1.11.2.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/user-switching/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "John Blackbourn"
+                }
+            ],
+            "description": "Instant switching between user accounts in WordPress and WooCommerce.",
+            "homepage": "https://wordpress.org/plugins/user-switching/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/user-switching/#developers",
+                "issues": "https://wordpress.org/support/plugin/user-switching",
+                "source": "https://plugins.svn.wordpress.org/user-switching"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/wordpress-seo",
+            "name": "wp-plugin/wordpress-seo",
             "version": "27.5",
             "source": {
                 "type": "svn",
@@ -8275,13 +8521,26 @@
                 "url": "https://downloads.wordpress.org/plugin/wordpress-seo.27.5.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wordpress-seo/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Yoast"
+                }
+            ],
+            "description": "Improve your SEO with real-time feedback, schema, and clear guidance. Upgrade for AI tools, Google Docs integration, and 24/7 support, no hidden fees.",
+            "homepage": "https://yoa.st/1uj",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/wordpress-seo/#developers",
+                "issues": "https://wordpress.org/support/plugin/wordpress-seo",
+                "source": "https://plugins.svn.wordpress.org/wordpress-seo"
+            },
+            "time": "2026-05-08T08:30:48+00:00"
         },
         {
-            "name": "wpackagist-plugin/wp-crontrol",
+            "name": "wp-plugin/wp-crontrol",
             "version": "1.21.0",
             "source": {
                 "type": "svn",
@@ -8293,13 +8552,26 @@
                 "url": "https://downloads.wordpress.org/plugin/wp-crontrol.1.21.0.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-crontrol/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "John Blackbourn"
+                }
+            ],
+            "description": "WP Crontrol enables you to take control of the cron events on your WordPress website.",
+            "homepage": "https://wp-crontrol.com",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/wp-crontrol/#developers",
+                "issues": "https://wordpress.org/support/plugin/wp-crontrol",
+                "source": "https://plugins.svn.wordpress.org/wp-crontrol"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/wp-native-php-sessions",
+            "name": "wp-plugin/wp-native-php-sessions",
             "version": "1.4.5",
             "source": {
                 "type": "svn",
@@ -8311,13 +8583,26 @@
                 "url": "https://downloads.wordpress.org/plugin/wp-native-php-sessions.1.4.5.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-native-php-sessions/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Pantheon Systems"
+                }
+            ],
+            "description": "Use native PHP sessions and stay horizontally scalable. Better living through superior technology.",
+            "homepage": "https://wordpress.org/plugins/wp-native-php-sessions/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/wp-native-php-sessions/#developers",
+                "issues": "https://wordpress.org/support/plugin/wp-native-php-sessions",
+                "source": "https://plugins.svn.wordpress.org/wp-native-php-sessions"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/wp-security-audit-log",
+            "name": "wp-plugin/wp-security-audit-log",
             "version": "5.6.3",
             "source": {
                 "type": "svn",
@@ -8329,13 +8614,26 @@
                 "url": "https://downloads.wordpress.org/plugin/wp-security-audit-log.5.6.3.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-security-audit-log/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Melapress"
+                }
+            ],
+            "description": "The #1 user-rated activity log plugin for event logging, activity monitoring and change tracking.",
+            "homepage": "https://melapress.com/wordpress-activity-log/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/wp-security-audit-log/#developers",
+                "issues": "https://wordpress.org/support/plugin/wp-security-audit-log",
+                "source": "https://plugins.svn.wordpress.org/wp-security-audit-log"
+            },
+            "time": "2026-04-28T06:25:52+00:00"
         },
         {
-            "name": "wpackagist-theme/twentytwentyfive",
+            "name": "wp-theme/twentytwentyfive",
             "version": "1.4",
             "source": {
                 "type": "svn",
@@ -8347,10 +8645,18 @@
                 "url": "https://downloads.wordpress.org/theme/twentytwentyfive.1.4.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-theme",
-            "homepage": "https://wordpress.org/themes/twentytwentyfive/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "description": "Twenty Twenty-Five emphasizes simplicity and adaptability. It offers flexible design options, supported by a variety of patterns for different page types, such as services and landing pages, making it ideal for building personal blogs, professional portfolios, online magazines, or business websites. Its templates cater to various blog styles, from text-focused to image-heavy layouts. Additionally, it supports international typography and diverse color palettes, ensuring accessibility and customization for users worldwide.",
+            "homepage": "https://wordpress.org/themes/twentytwentyfive/",
+            "support": {
+                "changelog": "https://wordpress.org/themes/twentytwentyfive/#developers",
+                "issues": "https://wordpress.org/support/theme/twentytwentyfive",
+                "source": "https://themes.svn.wordpress.org/twentytwentyfive"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
             "name": "wpengine/advanced-custom-fields-pro",

@@ -11,19 +11,16 @@
 		},
     {
       "type": "composer",
-      "url": "https://wpackagist.org",
-      "only": [
-        "wpackagist-plugin/*",
-        "wpackagist-theme/*"
-      ]
-    },
-    {
-      "type": "composer",
       "url": "https://connect.advancedcustomfields.com"
     },
     {
         "type": "composer",
         "url": "https://composer.admincolumns.com"
+    },
+    {
+      "name": "wp-packages",
+      "type": "composer",
+      "url": "https://repo.wp-packages.org"
     }
   ],
   "require": {
@@ -45,30 +42,30 @@
     "roots/wordpress": "~6.9.4",
     "roots/wp-config": "^1.0.0",
     "vlucas/phpdotenv": "^5.4",
-    "wpackagist-plugin/admin-menu-editor": "^1.12.4",
-    "wpackagist-plugin/better-image-sizes": "^3.8.0",
-    "wpackagist-plugin/block-manager": "^3.0",
-    "wpackagist-plugin/disable-embeds": "^1.5",
-    "wpackagist-plugin/disable-emojis": "^1.7",
-    "wpackagist-plugin/duplicate-post": "^4.5.0",
-    "wpackagist-plugin/enable-media-replace": "^4.1.5",
-    "wpackagist-plugin/favicon-by-realfavicongenerator": "^1.3.32",
-    "wpackagist-plugin/filebird": "^6.3.2",
-    "wpackagist-plugin/pantheon-advanced-page-cache": "^2.0",
-    "wpackagist-plugin/pantheon-hud": "^0.4.3",
-    "wpackagist-plugin/post-type-switcher": "^4.0.0",
-    "wpackagist-plugin/query-monitor": "^4.0.6",
-    "wpackagist-plugin/redirection": "^5.5.0",
-    "wpackagist-plugin/resize-image-after-upload": "^1.8.6",
-    "wpackagist-plugin/safe-svg": "^2.2.5",
-    "wpackagist-plugin/simple-custom-post-order": "^2.5.7",
-    "wpackagist-plugin/term-management-tools": "^2.0.2",
-    "wpackagist-plugin/user-switching": "^1.11.0",
-    "wpackagist-plugin/wordpress-seo": "^27.0.0",
-    "wpackagist-plugin/wp-crontrol": "^1.18",
-    "wpackagist-plugin/wp-native-php-sessions": "^1.2",
-    "wpackagist-plugin/wp-security-audit-log": "^5.5.3",
-    "wpackagist-theme/twentytwentyfive": "^1.2",
+    "wp-plugin/admin-menu-editor": "^1.12.4",
+    "wp-plugin/better-image-sizes": "^3.8.0",
+    "wp-plugin/block-manager": "^3.0",
+    "wp-plugin/disable-embeds": "^1.5",
+    "wp-plugin/disable-emojis": "^1.7",
+    "wp-plugin/duplicate-post": "^4.5.0",
+    "wp-plugin/enable-media-replace": "^4.1.5",
+    "wp-plugin/favicon-by-realfavicongenerator": "^1.3.32",
+    "wp-plugin/filebird": "^6.3.2",
+    "wp-plugin/pantheon-advanced-page-cache": "^2.0",
+    "wp-plugin/pantheon-hud": "^0.4.3",
+    "wp-plugin/post-type-switcher": "^4.0.0",
+    "wp-plugin/query-monitor": "^4.0.6",
+    "wp-plugin/redirection": "^5.5.0",
+    "wp-plugin/resize-image-after-upload": "^1.8.6",
+    "wp-plugin/safe-svg": "^2.2.5",
+    "wp-plugin/simple-custom-post-order": "^2.5.7",
+    "wp-plugin/term-management-tools": "^2.0.2",
+    "wp-plugin/user-switching": "^1.11.0",
+    "wp-plugin/wordpress-seo": "^27.0.0",
+    "wp-plugin/wp-crontrol": "^1.18",
+    "wp-plugin/wp-native-php-sessions": "^1.2",
+    "wp-plugin/wp-security-audit-log": "^5.5.3",
+    "wp-theme/twentytwentyfive": "^1.2",
     "wpengine/advanced-custom-fields-pro": "~6.7.0"
   },
   "require-dev": {
