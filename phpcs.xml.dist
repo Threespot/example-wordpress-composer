@@ -6,7 +6,6 @@
     not scanned here. Starts from Pantheon-WP-Minimum so we can ratchet up to
     Pantheon-WP once the baseline is clean.</description>
 
-    <file>web/wp-content/mu-plugins/loader.php</file>
     <file>web/wp-content/themes/sage/app</file>
     <file>web/wp-content/themes/sage/config</file>
     <file>web/wp-content/themes/sage/functions.php</file>

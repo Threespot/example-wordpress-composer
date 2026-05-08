@@ -112,6 +112,10 @@
       "web/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "web/wp-content/themes/{$name}/": ["type:wordpress-theme"],
       "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
+    },
+    "mu-plugin-stubs": {
+      "loader.php": "https://raw.githubusercontent.com/pantheon-systems/WordPress/default/wp-content/mu-plugins/loader.php",
+      "bedrock-autoloader.php": "https://raw.githubusercontent.com/roots/bedrock/master/web/app/mu-plugins/bedrock-autoloader.php"
     }
   },
   "autoload": {
@@ -140,6 +144,9 @@
     "post-create-project-cmd": [
       "@cleanup",
       "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "mu-stubs:update": [
+      "WordPressProject\\composer\\ScriptHandler::updateMuPluginStubs"
     ],
     "phpstan": [
       "./vendor/bin/phpstan analyse --memory-limit=1G"
