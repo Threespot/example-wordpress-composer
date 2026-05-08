@@ -3,6 +3,7 @@
 // Define the directory to search in and an array of replacements
 $directory = dirname(__DIR__, 2);
 $replacements = [
+    'example-wordpress-composer' => 'fixme-app-name',
     'fixme-app-name' => 'app-name', // ex: app-name
     'fixme-project-name' => 'Client Name', // ex: Client Name
     'fixme-domain' => 'https://clientdomain.org' // ex: www.clientdomain.org    (do not include the protocal)
@@ -25,7 +26,7 @@ $excludedDirectories = [
   "web/wp-content/uploads",
   "web/wp-content/cache",
   "web/wp-content/themes/twentytwentyfour",
-  "web/wp/wp-includes", 
+  "web/wp/wp-includes",
   "tests",
   "vendor",
   "web/wp-content/themes/sage/node_modules",
@@ -70,7 +71,7 @@ function replaceTextInFiles($files, $replacements, $exclusions) {
         }
         $content = file_get_contents($file);
         $updatedContent = str_replace(array_keys($replacements), array_values($replacements), $content);
-        
+
         // Only write if changes were made
         if ($content !== $updatedContent) {
             file_put_contents($file, $updatedContent);
@@ -79,7 +80,7 @@ function replaceTextInFiles($files, $replacements, $exclusions) {
     }
 }
 
-// Get all files and perform replacements 
+// Get all files and perform replacements
 $files = getFiles($directory, $excludedDirectories);
 echo implode("\n", $files) . "\n";
 replaceTextInFiles($files, $replacements, $exclusions);
