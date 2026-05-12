@@ -120,6 +120,79 @@ if (defined('PANTHEON_BINDING')) {
 }
 
 /**
+ * Admin Columns Pro plugin license
+ */
+Config::define('ACP_LICENCE', Env::get('ACP_LICENCE'));
+
+/**
+ * SearchWP plugin license
+ */
+Config::define('SEARCHWP_LICENSE_KEY', Env::get('SEARCHWP_LICENSE_KEY'));
+
+/**
+ * Object Cache Pro config
+ * https://docs.pantheon.io/object-cache/wordpress
+ * This configuration applies to both local and Pantheon environments
+ */
+$ocp_settings = [
+	'token' => Env::get('OCP_LICENSE') ?: null,
+	'host' => Env::get('CACHE_HOST') ?: '127.0.0.1',
+	'port' => Env::get('CACHE_PORT') ?: 6379,
+	'database' => Env::get('CACHE_DB') ?: 0,
+	'password' => Env::get('CACHE_PASSWORD') ?: null,
+	'maxttl' => 86400,
+	'timeout' => 2.0,
+	'read_timeout' => 2.0,
+	'retry_interval' => 100,
+	'split_alloptions' => true,
+	'prefetch' => true,
+	'debug' => false,
+	'save_commands' => false,
+	'analytics' => [
+		'enabled' => true,
+		'persist' => false,
+		'retention' => 3600, // 1 hour
+		'footnote' => true,
+	],
+	'prefix' => "ocppantheon", // This prefix can be changed. Setting a prefix helps avoid conflict when switching from other plugins like wp-redis.
+	'serializer' => 'igbinary',
+	'compression' => 'zstd',
+	'async_flush' => true,
+	'strict' => true,
+];
+
+// Load Object Cache Pro token from Pantheon secrets.json if available.
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+	$secrets_file = rtrim(Env::get('HOME') ?: ($_SERVER['HOME'] ?? ''), '/') . '/files/private/secrets.json';
+	if ($secrets_file && file_exists($secrets_file)) {
+		$secrets = json_decode(file_get_contents($secrets_file), true);
+		if (is_array($secrets) && !empty($secrets['OCP_LICENSE'])) {
+			$ocp_settings['token'] = $secrets['OCP_LICENSE'];
+		}
+	}
+}
+
+// Object Cache Pro config for lando
+// https://docs.pantheon.io/object-cache/wordpress#local-configuration-with-lando
+if (isset($_ENV['LANDO']) && $_ENV['LANDO'] === 'ON') {
+	$ocp_settings['serializer'] = 'php';
+	$ocp_settings['compression'] = 'none';
+
+	// Try to get token from auth.json (one directory up from web/)
+	$auth_json_path = $root_dir . '/auth.json';
+
+	if (file_exists($auth_json_path)) {
+		$auth_json = json_decode(file_get_contents($auth_json_path), true); // true = return as array
+		if (isset($auth_json['http-basic']['objectcache.pro']['password'])) {
+			$ocp_settings['token'] = $auth_json['http-basic']['objectcache.pro']['password'];
+		}
+	}
+}
+
+Config::define('WP_REDIS_CONFIG', $ocp_settings);
+
+
+/**
  * Per-environment overrides.
  */
 $env_config = __DIR__ . "/environments/{$wp_env}.php";
