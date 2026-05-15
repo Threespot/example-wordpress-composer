@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93a0c64e42a2238805467fc0a48e7a24",
+    "content-hash": "da57a4fe8d6db4805266686a072f7ef4",
     "packages": [
         {
             "name": "admin-columns/admin-columns-pro",
@@ -7761,6 +7761,72 @@
                 }
             ],
             "time": "2026-03-30T13:44:50+00:00"
+        },
+        {
+            "name": "threespot/wp-base-config",
+            "version": "0.5.2",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Threespot/wp-base-config.git",
+                "reference": "08d1fe34e28b9813c69d84cb69521c3ed5373e8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Threespot/wp-base-config/zipball/08d1fe34e28b9813c69d84cb69521c3ed5373e8b",
+                "reference": "08d1fe34e28b9813c69d84cb69521c3ed5373e8b",
+                "shasum": ""
+            },
+            "require": {
+                "log1x/navi": "^3.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "brain/monkey": "^2.6",
+                "phpunit/phpunit": "^10.5 || ^11.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Threespot\\Wp\\MuPlugins\\": "src/MuPlugins/"
+                },
+                "files": [
+                    "src/Helpers/author.php",
+                    "src/Helpers/general.php",
+                    "src/Helpers/image.php",
+                    "src/Helpers/menu.php",
+                    "src/Helpers/svg.php",
+                    "src/Helpers/taxonomy.php",
+                    "src/PublicApi/functions.php",
+                    "src/Sage/assets.php",
+                    "src/Sage/blade.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Threespot\\Wp\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Threespot",
+                    "homepage": "https://threespot.com"
+                }
+            ],
+            "description": "Reusable WordPress mu-plugin modules and helper functions shared across Threespot sites.",
+            "homepage": "https://github.com/threespot/wp-base-config",
+            "support": {
+                "source": "https://github.com/Threespot/wp-base-config/tree/0.5.2",
+                "issues": "https://github.com/Threespot/wp-base-config/issues"
+            },
+            "time": "2026-05-15T18:48:03+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
