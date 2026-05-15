@@ -37,8 +37,6 @@ web/private/scripts/quicksilver
 .bashrc
 
 # Threespot custom rules
-.claude
-refactor-preview
 .env
 *.env
 .env.*
@@ -53,6 +51,10 @@ auth.json
 .stylelintcache
 logs/*
 !logs/collect-logs-rsync.sh
+# Claude
+issue-report-cache.json
+settings.local.json
+refactor-preview
 # Overrides to keep files
 !web/cache
 !web/wp-content/mu-plugins/bedrock-autoloader.php
