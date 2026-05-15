@@ -38,6 +38,7 @@ web/private/scripts/quicksilver
 
 # Threespot custom rules
 .claude
+refactor-preview
 .env
 *.env
 .env.*

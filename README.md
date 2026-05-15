@@ -156,3 +156,27 @@ Composer, Terminus and wp-cli commands should be run in Lando rather than on the
 ## Re-enabling automation
 
 The automation which ran daily to check for composer updates has been disabled as of `12/5/22`. Build Tools users can re-enable automation to check for composer updates by uncommenting uncommenting the  `scheduled_update_check` in `.circleci/config.yml`.
+
+## Custom Post Types and Taxonomies
+
+CPTs and taxonomies are auto-loaded by the `threespot/wp-base-config` package
+from these mu-plugins folders — no `add_action` or loader file required:
+
+```
+web/wp-content/mu-plugins/
+├── custom-post-types/post-types/     ← one file per CPT
+└── custom-taxonomies/taxonomies/     ← one file per taxonomy
+```
+
+Each file registers itself via [extended-cpts](https://github.com/johnbillion/extended-cpts).
+Setting `'query_var' => true` on a taxonomy automatically enables
+`?taxonomy=term` URL filtering on archive pages — the package translates
+the query var into a `tax_query` clause on the main query, with multiple
+filters combining via `AND`.
+
+Example files ship with this starter (`news.php` / `news-type.php`).
+Delete them and add your own once a project's content model is defined.
+
+See [wp-base-config's docs](https://github.com/threespot/wp-base-config#registering-custom-post-types-and-taxonomies)
+for the full convention, including where to put archive-specific query
+tweaks like custom `orderby` or `posts_per_archive_page`.

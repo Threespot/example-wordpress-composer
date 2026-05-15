@@ -45,7 +45,7 @@
     "roots/bedrock-disallow-indexing": "^2.0",
     "roots/wordpress": "~6.9.4",
     "roots/wp-config": "^1.0.0",
-    "threespot/wp-base-config": "^0.5.2",
+    "threespot/wp-base-config": "^0.6.0",
     "vlucas/phpdotenv": "^5.4",
     "wp-plugin/admin-menu-editor": "^1.12.4",
     "wp-plugin/better-image-sizes": "^3.8.0",
