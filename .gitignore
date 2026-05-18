@@ -52,8 +52,8 @@ auth.json
 logs/*
 !logs/collect-logs-rsync.sh
 # Claude
-issue-report-cache.json
-settings.local.json
+.claude/*
+!.claude/settings.json
 refactor-preview
 # Overrides to keep files
 !web/cache
