@@ -1,5 +1,5 @@
 ---
-name: 🐞 Bug
+name: Example Markdown
 about: File a bug/issue
 title: '[BUG] <title>'
 labels: Bug, Needs Triage
