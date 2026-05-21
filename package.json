@@ -1,0 +1,17 @@
+{
+  "name": "fixme-app-name-vrt",
+  "private": true,
+  "description": "Visual regression testing harness. Consumes @threespot/visual-regression; per-site scenarios live in visual-regression/scenarios.js.",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "vrt:install": "playwright install chromium firefox webkit",
+    "vrt:test": "VRT_BASELINE_URL=https://dev-fixme-app-name.pantheonsite.io VRT_TEST_URL=http://fixme-app-name.lndo.site vrt test",
+    "vrt:report": "vrt report"
+  },
+  "devDependencies": {
+    "@threespot/visual-regression": "github:threespot/visual-regression#v0.2.1"
+  },
+  "packageManager": "yarn@4.14.1"
+}

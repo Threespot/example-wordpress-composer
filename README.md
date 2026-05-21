@@ -135,6 +135,25 @@ Commit the updated `phpstan-baseline.neon`. Aim to shrink it over time, not grow
 
 Level is set in `phpstan.neon.dist` (currently `5`, on a 0–9 scale). Raise it once the baseline is empty.
 
+## Visual Regression Testing
+
+Cross-browser visual regression via [`@threespot/visual-regression`](https://github.com/threespot/visual-regression) (Playwright-based). Run locally on demand — not part of CI.
+
+Per-site scenarios live in [`visual-regression/scenarios.js`](./visual-regression/scenarios.js). Set `VRT_BASELINE_URL` and `VRT_TEST_URL` on each invocation:
+
+```shell
+yarn install                # from repo root
+yarn vrt:install            # downloads Chromium, Firefox, WebKit
+
+VRT_BASELINE_URL=https://example.org \
+VRT_TEST_URL=http://fixme-app-name.lndo.site \
+yarn vrt:test
+
+yarn vrt:report             # open the HTML diff report
+```
+
+See the [`@threespot/visual-regression` README](https://github.com/threespot/visual-regression) for filtering flags, comparison modes, masking dynamic content, and tuning thresholds.
+
 ## Working locally with Lando
 To get started using Lando to develop locally complete these one-time steps. Please note than Lando is an independent product and is not supported by Pantheon. For further assistance please refer to the [Lando documentation](https://docs.devwithlando.io/).
 

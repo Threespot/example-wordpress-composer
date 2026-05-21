@@ -18,7 +18,9 @@ $exclusions = [
 
 $excludedDirectories = [
   ".git",
+  ".tinkerwell",
   ".vscode",
+  ".github",
   "scripts",
   "web/wp",
   "web/wp-content/mu-plugins",
@@ -30,7 +32,10 @@ $excludedDirectories = [
   "tests",
   "vendor",
   "web/wp-content/themes/sage/node_modules",
-  "web/wp-content/themes/sage/vendor"
+  "web/wp-content/themes/sage/vendor",
+  "node_modules",
+  "logs",
+  "visual-regression",
 ];
 
 // Function to recursively get all files in a directory, skipping excluded directories

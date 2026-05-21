@@ -56,6 +56,19 @@ logs/*
 .claude/*
 !.claude/settings.json
 refactor-preview
+# Yarn (v2+)
+/.yarn/*
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+!/.yarn/versions
+/.pnp.*
+
+# Visual regression testing
+/node_modules/
+/playwright-report/
+/test-results/
 # Overrides to keep files
 !web/cache
 !web/wp-content/mu-plugins/bedrock-autoloader.php

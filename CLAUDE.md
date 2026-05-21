@@ -106,7 +106,6 @@ The `deploy:test`, `deploy:live`, and `deploy:all` Composer scripts contain `fix
 ## Misc
 
 - `README.template.md` is the upstream Pantheon README, kept for reference. `README.md` is the active, customized version.
-- `pantheon-wp-composer-comparison.md` is project notes comparing this starter to alternatives; not user-facing docs.
 - `docs/troubleshooting.md` has a few known-issue notes.
 - `.op/` and `.tinkerwell/` are local-tool directories (1Password, Tinkerwell). Not part of the build.
 - `object-cache.php` in `wp-content/` is the OCP dropin; it's allow-listed in `.gitignore` even though installed via Composer.
