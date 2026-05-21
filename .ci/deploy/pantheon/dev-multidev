@@ -32,6 +32,10 @@ terminus -n env:clear-cache "$TERMINUS_SITE.$TERMINUS_ENV"
 # Ensure secrets are set
 terminus -n secrets:set "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN" --file='github-secrets.json' --clear --skip-if-empty
 
+# Object Cache Pro license token — consumed at runtime by config/application.php
+# from ~/files/private/secrets.json. Don't pass --clear so other keys persist.
+terminus -n secrets:set "$TERMINUS_SITE.$TERMINUS_ENV" OCP_LICENSE "$OCP_LICENSE" --file='secrets.json' --skip-if-empty
+
 # Delete old multidev environments associated
 # with a PR that has been merged or closed.
 terminus -n build:env:delete:pr $TERMINUS_SITE --yes

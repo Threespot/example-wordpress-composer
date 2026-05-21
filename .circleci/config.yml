@@ -242,6 +242,8 @@ workflows:
           context:
             - plugin_keys
       - deploy_to_pantheon:
+          context:
+            - plugin_keys
           requires:
             - static_tests
             - build_yarn
