@@ -1,0 +1,31 @@
+name: fixme-app-name
+recipe: pantheon
+config:
+  framework: wordpress
+  site: fixme-app-name
+  id: FIXME_pantheon_app_id
+events:
+  pre-start:
+    - mkdir -p web/wp-content/uploads/cache/acorn/framework/cache
+  # `lando push` overwrites Pantheon's MySQL but leaves Object Cache Pro's
+  # Redis untouched, so the admin can render stale post-list query results
+  # (e.g. fresh pages missing from the Pages list while the counts are
+  # correct). Flush the remote cache for the env matching the current branch.
+  post-push:
+    - appserver: 'BRANCH=$(git -C /app rev-parse --abbrev-ref HEAD); ENV=$BRANCH; if [ "$ENV" = "master" ] || [ "$ENV" = "main" ]; then ENV=dev; fi; echo "Flushing Pantheon cache for fixme-app-name.$ENV..."; terminus env:clear-cache "fixme-app-name.$ENV"'
+services:
+  appserver:
+    xdebug: debug
+    config:
+      php: .vscode/php.ini
+    build:
+      - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+      - chmod +x wp-cli.phar
+      - mv wp-cli.phar /usr/local/bin/wp
+  cache:
+    type: redis:6.0
+  mailhog:
+    type: mailhog
+    portforward: true
+    hogfrom:
+      - appserver

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2bf30511c647dba2b9d44184ed555950",
+    "content-hash": "6102608a89fe16f2f279e5c625d54b61",
     "packages": [
         {
             "name": "admin-columns/admin-columns-pro",
@@ -7767,16 +7767,16 @@
         },
         {
             "name": "threespot/wp-base-config",
-            "version": "0.7.0",
+            "version": "0.9.17",
             "source": {
                 "type": "git",
                 "url": "git@github.com:Threespot/wp-base-config.git",
-                "reference": "497301800f348cbc4255d30b1c59497bf729875e"
+                "reference": "4f62f9981e50fdf906dec716741834c1fa1ee39d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Threespot/wp-base-config/zipball/497301800f348cbc4255d30b1c59497bf729875e",
-                "reference": "497301800f348cbc4255d30b1c59497bf729875e",
+                "url": "https://api.github.com/repos/Threespot/wp-base-config/zipball/4f62f9981e50fdf906dec716741834c1fa1ee39d",
+                "reference": "4f62f9981e50fdf906dec716741834c1fa1ee39d",
                 "shasum": ""
             },
             "require": {
@@ -7801,7 +7801,8 @@
                     "src/Helpers/taxonomy.php",
                     "src/PublicApi/functions.php",
                     "src/Sage/assets.php",
-                    "src/Sage/blade.php"
+                    "src/Sage/blade.php",
+                    "src/Sage/prettify.php"
                 ]
             },
             "autoload-dev": {
@@ -7826,10 +7827,10 @@
             "description": "Reusable WordPress mu-plugin modules and helper functions shared across Threespot sites.",
             "homepage": "https://github.com/threespot/wp-base-config",
             "support": {
-                "source": "https://github.com/Threespot/wp-base-config/tree/0.7.0",
+                "source": "https://github.com/Threespot/wp-base-config/tree/0.9.17",
                 "issues": "https://github.com/Threespot/wp-base-config/issues"
             },
-            "time": "2026-05-20T18:18:35+00:00"
+            "time": "2026-05-29T14:43:34+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    ":timezone(America/New_York)"
+  ],
+  "schedule": ["before 6am on monday"],
+  "labels": ["dependencies"],
+  "prHourlyLimit": 4,
+  "prConcurrentLimit": 10,
+  "rangeStrategy": "bump",
+  "composer": { "enabled": true },
+  "npm": { "enabled": true },
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "schedule": ["at any time"]
+  },
+  "packageRules": [
+    {
+      "matchPackageNames": ["threespot/**", "@threespot/**"],
+      "groupName": "Threespot shared packages",
+    },
+    {
+      "matchPackageNames": ["wp-plugin/**", "wp-theme/**", "wpengine/**"],
+      "groupName": "WordPress plugins & themes"
+    },
+    {
+      "matchPackageNames": ["roots/wordpress"],
+      "groupName": "WordPress core"
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    }
+  ]
+}
