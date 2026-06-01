@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c7a8323defceb9962be384aa601213e",
+    "content-hash": "13731116e0dddd797f4281fb8b4323b2",
     "packages": [
         {
             "name": "admin-columns/admin-columns-pro",
@@ -8053,6 +8053,99 @@
             "time": "2026-05-27T22:16:17+00:00"
         },
         {
+            "name": "wp-plugin/ai-provider-for-anthropic",
+            "version": "1.0.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/ai-provider-for-anthropic/",
+                "reference": "tags/1.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ai-provider-for-anthropic.1.0.3.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0|~2.0"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "WordPress.org"
+                }
+            ],
+            "description": "Anthropic (Claude) provider for the PHP AI Client SDK.",
+            "homepage": "https://github.com/WordPress/ai-provider-for-anthropic",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/ai-provider-for-anthropic/#developers",
+                "issues": "https://wordpress.org/support/plugin/ai-provider-for-anthropic",
+                "source": "https://plugins.svn.wordpress.org/ai-provider-for-anthropic"
+            },
+            "time": "2026-05-13T22:35:47+00:00"
+        },
+        {
+            "name": "wp-plugin/ai-provider-for-google",
+            "version": "1.1.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/ai-provider-for-google/",
+                "reference": "tags/1.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ai-provider-for-google.1.1.0.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0|~2.0"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "WordPress.org"
+                }
+            ],
+            "description": "Google AI (Gemini) provider for the PHP AI Client SDK.",
+            "homepage": "https://github.com/WordPress/ai-provider-for-google",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/ai-provider-for-google/#developers",
+                "issues": "https://wordpress.org/support/plugin/ai-provider-for-google",
+                "source": "https://plugins.svn.wordpress.org/ai-provider-for-google"
+            },
+            "time": "2026-05-13T21:46:25+00:00"
+        },
+        {
+            "name": "wp-plugin/ai-provider-for-openai",
+            "version": "1.0.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/ai-provider-for-openai/",
+                "reference": "tags/1.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ai-provider-for-openai.1.0.3.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0|~2.0"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "WordPress.org"
+                }
+            ],
+            "description": "AI Provider for OpenAI for the PHP AI Client SDK.",
+            "homepage": "https://github.com/WordPress/ai-provider-for-openai",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/ai-provider-for-openai/#developers",
+                "issues": "https://wordpress.org/support/plugin/ai-provider-for-openai",
+                "source": "https://plugins.svn.wordpress.org/ai-provider-for-openai"
+            },
+            "time": "2026-05-13T22:26:08+00:00"
+        },
+        {
             "name": "wp-plugin/better-image-sizes",
             "version": "3.9",
             "source": {
@@ -11176,16 +11269,16 @@
         },
         {
             "name": "threespot/wp-fixtures",
-            "version": "0.1.2",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Threespot/wp-fixtures.git",
-                "reference": "e4108fb74cffe42b1f931aa1c5f356a44197a0c6"
+                "reference": "d5ae5a5ef7187d5c3b3278ce22d13bc2221111bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Threespot/wp-fixtures/zipball/e4108fb74cffe42b1f931aa1c5f356a44197a0c6",
-                "reference": "e4108fb74cffe42b1f931aa1c5f356a44197a0c6",
+                "url": "https://api.github.com/repos/Threespot/wp-fixtures/zipball/d5ae5a5ef7187d5c3b3278ce22d13bc2221111bd",
+                "reference": "d5ae5a5ef7187d5c3b3278ce22d13bc2221111bd",
                 "shasum": ""
             },
             "require": {
@@ -11222,10 +11315,10 @@
                 "wp-cli"
             ],
             "support": {
-                "source": "https://github.com/Threespot/wp-fixtures/tree/0.1.2",
+                "source": "https://github.com/Threespot/wp-fixtures/tree/0.1.4",
                 "issues": "https://github.com/Threespot/wp-fixtures/issues"
             },
-            "time": "2026-06-01T19:13:34+00:00"
+            "time": "2026-06-01T20:59:59+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

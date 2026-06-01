@@ -53,6 +53,9 @@
     "vlucas/phpdotenv": "^5.4",
     "wp-plugin/admin-menu-editor": "^1.12.4",
     "wp-plugin/ai": "^1.0.0",
+    "wp-plugin/ai-provider-for-anthropic": "^1.0.3",
+    "wp-plugin/ai-provider-for-google": "^1.1.0",
+    "wp-plugin/ai-provider-for-openai": "^1.0.3",
     "wp-plugin/better-image-sizes": "^3.8.0",
     "wp-plugin/block-manager": "^3.0",
     "wp-plugin/disable-embeds": "^1.5",
@@ -86,7 +89,7 @@
     "phpstan/phpstan": "^2.1",
     "roave/security-advisories": "dev-latest",
     "szepeviktor/phpstan-wordpress": "^2.0",
-    "threespot/wp-fixtures": "^0.1.1"
+    "threespot/wp-fixtures": "^0.1.4"
   },
   "config": {
     "vendor-dir": "vendor",
