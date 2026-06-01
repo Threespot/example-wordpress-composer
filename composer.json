@@ -25,6 +25,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/threespot/wp-base-config"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/threespot/wp-fixtures"
     }
   ],
   "require": {
@@ -45,7 +49,7 @@
     "roots/bedrock-disallow-indexing": "^2.0",
     "roots/wordpress": "~7.0.0",
     "roots/wp-config": "^1.0.0",
-    "threespot/wp-base-config": "^0.9.17",
+    "threespot/wp-base-config": "^0.9.20",
     "vlucas/phpdotenv": "^5.4",
     "wp-plugin/admin-menu-editor": "^1.12.4",
     "wp-plugin/ai": "^1.0.0",
@@ -81,7 +85,8 @@
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan": "^2.1",
     "roave/security-advisories": "dev-latest",
-    "szepeviktor/phpstan-wordpress": "^2.0"
+    "szepeviktor/phpstan-wordpress": "^2.0",
+    "threespot/wp-fixtures": "^0.1.1"
   },
   "config": {
     "vendor-dir": "vendor",
@@ -163,7 +168,12 @@
     "unit-test": [
       "./vendor/bin/phpunit tests/unit/*"
     ],
-    "lint": "find web/wp-content -name '*.php' -exec php -l {} \\;",
+    "lint": "git ls-files -z 'web/wp-content/*.php' ':!:web/wp-content/plugins/*' | xargs -0 -P4 -n1 php -l",
+    "ci": [
+      "@lint",
+      "@phpcs",
+      "@phpstan"
+    ],
     "deploy:test": "terminus env:deploy fixme-app-name.test && terminus env:clear-cache fixme-app-name.test",
     "deploy:live": "terminus env:deploy fixme-app-name.live",
     "deploy:all": "terminus env:deploy fixme-app-name.test && terminus env:clear-cache fixme-app-name.test && terminus env:deploy fixme-app-name.live && terminus env:clear-cache fixme-app-name.live",
