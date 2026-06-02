@@ -5,20 +5,27 @@
   "license": "proprietary",
   "keywords": [],
   "repositories": [
-		{
-			"type": "composer",
-			"url": "https://objectcache.pro/repo/"
-		},
+    {
+      "type": "composer",
+      "url": "https://composer.admincolumns.com"
+    },
+    {
+      "type": "composer",
+      "url": "https://composer.gravity.io"
+    },
     {
       "type": "composer",
       "url": "https://connect.advancedcustomfields.com"
     },
     {
-        "type": "composer",
-        "url": "https://composer.admincolumns.com"
+      "type": "composer",
+      "url": "https://gravitywiz.com/composer"
     },
     {
-      "name": "wp-packages",
+      "type": "composer",
+      "url": "https://objectcache.pro/repo/"
+    },
+    {
       "type": "composer",
       "url": "https://repo.wp-packages.org"
     },
@@ -29,6 +36,21 @@
     {
       "type": "vcs",
       "url": "https://github.com/threespot/wp-fixtures"
+    },
+    {
+      "type": "package",
+        "package": {
+          "name": "junaidbhura/acf-extended-pro",
+          "version": "0.9.2.6",
+          "type": "wordpress-plugin",
+          "dist": {
+          "type": "zip",
+          "url": "https://www.acf-extended.com/"
+        },
+        "require": {
+          "junaidbhura/composer-wp-pro-plugins": "*"
+        }
+      }
     }
   ],
   "require": {
@@ -37,7 +59,10 @@
     "composer/installers": "^2.3.0",
     "cweagans/composer-patches": "^2.0.0",
     "filp/whoops": "^2.14",
+    "gravity/gravityforms": "^2.10.3",
+    "gravity/gravityformsgoogleanalytics": "^2.4.1",
     "johnbillion/extended-cpts": "^5.0.0",
+    "junaidbhura/acf-extended-pro": "*",
     "log1x/navi": "^3.0.2",
     "oscarotero/env": "^2.1",
     "pantheon-systems/pantheon-mu-plugin": "^1.5",

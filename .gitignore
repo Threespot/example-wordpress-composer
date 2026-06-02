@@ -80,7 +80,6 @@ refactor-preview
 !web/wp-content/mu-plugins/threespot-wp-base-config.php
 !web/wp-content/object-cache.php
 # Include any plugins not loaded via composer
-!web/wp-content/plugins/acf-extended-pro
 !web/wp-content/plugins/facetwp*
 !web/wp-content/plugins/polylang-pro
 !web/wp-content/plugins/searchwp*
@@ -88,10 +87,6 @@ refactor-preview
 !web/wp-content/plugins/wp-all-*
 !web/wp-content/plugins/wpae*
 !web/wp-content/plugins/wpai*
-# Gravity Forms
-!web/wp-content/plugins/gp-populate-anything
-!web/wp-content/plugins/gravityforms*
-!web/wp-content/plugins/spellbook
 # The Events Calendar
 !web/wp-content/plugins/events-calendar-pro
 !web/wp-content/plugins/the-events-calendar-*
