@@ -4,8 +4,10 @@ includes:
 parameters:
     level: 5
 
+    # Add mu-plugin paths here as custom code lands (e.g. custom-post-types,
+    # custom-taxonomies). Composer-installed mu-plugins are gitignored and are
+    # removed by `git clean -fdX web` in CI, so they can't be analysed.
     paths:
-        - web/wp-content/mu-plugins/loader.php
         - web/wp-content/themes/sage/app
         - web/wp-content/themes/sage/config
         - web/wp-content/themes/sage/functions.php

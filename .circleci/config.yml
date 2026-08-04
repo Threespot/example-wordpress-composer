@@ -234,7 +234,11 @@ workflows:
   build_deploy_and_test:
     jobs:
       - configure_env_vars
-      - static_tests
+      # static_tests runs composer install, which downloads premium plugins
+      # from their registries, so it needs the same credentials as build_php.
+      - static_tests:
+          context:
+            - plugin_keys
       - build_yarn
       - build_php:
           context:
