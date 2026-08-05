@@ -1,6 +1,7 @@
-# Regenerate after installing the Sage theme:
-#   ./vendor/bin/phpstan analyse --generate-baseline=phpstan-baseline.neon
-# This snapshots existing theme errors so CI stays green while still failing
-# on newly introduced ones.
 parameters:
-	ignoreErrors: []
+	ignoreErrors:
+		-
+			message: '#^Found usage of constant WP_INSTALLING\. Use wp_installing\(\) instead\.$#'
+			identifier: phpstanWP.wpConstant.fetch
+			count: 1
+			path: web/wp-content/mu-plugins/loader.php
