@@ -35,6 +35,13 @@ defaults: &defaults
     ADMIN_USERNAME: admin
     TERM: dumb
 
+    # Uncomment if gravitywiz.com (or another premium plugin repo) starts
+    # returning HTTP 429 on a cold composer cache. Composer fetches 12 dist
+    # files in parallel by default, and static_tests + build_php both run a
+    # root `composer install` concurrently, so a composer.lock bump sends two
+    # simultaneous bursts for the same files from one egress IP and license key.
+    # COMPOSER_MAX_PARALLEL_HTTP: 4
+
 version: 2.1
 jobs:
   configure_env_vars:
@@ -65,10 +72,22 @@ jobs:
     steps:
       - checkout
 
+      # NOTE: environment variables are NOT interpolated in cache `paths`,
+      # so only `~` and paths relative to working_directory work here.
       - restore_cache:
           keys:
             - composer-cache-{{ checksum "composer.lock" }}
             - composer-cache-
+
+      # The theme vendor dir is safe to cache because the theme has no
+      # custom installer-paths (everything lands in vendor/). Do NOT cache
+      # the root vendor dir: installer-paths place WP core and plugins
+      # under web/, and a restored vendor/composer/installed.json would
+      # make composer skip re-installing them into web/.
+      - restore_cache:
+          keys:
+            - theme-vendor-{{ checksum "web/wp-content/themes/sage/composer.lock" }}
+            - theme-vendor-
 
       - run:
           # Set TERMINUS_ENV and related environment variables.
@@ -83,7 +102,12 @@ jobs:
       - save_cache:
           key: composer-cache-{{ checksum "composer.lock" }}
           paths:
-            - $HOME/.composer/cache
+            - ~/.composer/cache
+
+      - save_cache:
+          key: theme-vendor-{{ checksum "web/wp-content/themes/sage/composer.lock" }}
+          paths:
+            - web/wp-content/themes/sage/vendor
 
   build_php:
     <<: *defaults
@@ -94,8 +118,11 @@ jobs:
           keys:
             - composer-cache-{{ checksum "composer.lock" }}
             - composer-cache-
-            - vendor-{{ checksum "composer.lock" }}
-            - vendor-
+
+      - restore_cache:
+          keys:
+            - theme-vendor-{{ checksum "web/wp-content/themes/sage/composer.lock" }}
+            - theme-vendor-
 
       - run:
           # Set TERMINUS_ENV and related environment variables.
@@ -111,12 +138,9 @@ jobs:
           name: install theme composer dependencies
           # Note: Add `--ignore-platform-req=ext-redis` for sites using Object Cache Pro
           #       https://docs.pantheon.io/object-cache/wordpress
-          command: cd web/wp-content/themes/sage && composer install --ignore-platform-req=ext-redis --no-interaction --optimize-autoloader --prefer-dist
-
-      - save_cache:
-          key: vendor-{{ checksum "composer.lock" }}
-          paths:
-            - $CIRCLE_WORKING_DIRECTORY/vendor
+          # --no-dev matches static_tests (shared theme-vendor cache) and keeps
+          # dev tooling (laravel/pint) out of the deploy artifact.
+          command: cd web/wp-content/themes/sage && composer install --ignore-platform-req=ext-redis --no-dev --no-interaction --optimize-autoloader --prefer-dist
 
       - persist_to_workspace:
           root: .
@@ -133,6 +157,18 @@ jobs:
 
     steps:
       - checkout
+
+      # vite.config.js imports ./threespot-vite-base.js, which is a symlink
+      # into vendor/threespot/wp-base-config. Fetch just that package at the
+      # exact ref pinned in composer.lock so this job can run in parallel
+      # with build_php instead of waiting on its full composer install.
+      - run:
+          name: fetch threespot/wp-base-config (vite base config)
+          command: |
+            REF=$(node -p "JSON.parse(require('fs').readFileSync('composer.lock', 'utf8')).packages.find(p => p.name === 'threespot/wp-base-config').source.reference")
+            git init -q vendor/threespot/wp-base-config
+            git -C vendor/threespot/wp-base-config fetch -q --depth 1 "https://x-access-token:${GITHUB_TOKEN}@github.com/threespot/wp-base-config.git" "$REF"
+            git -C vendor/threespot/wp-base-config checkout -q FETCH_HEAD
 
       - restore_cache:
           keys:
@@ -151,34 +187,35 @@ jobs:
           name: cache Yarn files
           key: yarn-packages-{{ checksum "web/wp-content/themes/sage/yarn.lock" }}
           paths:
-            - $HOME/.cache/yarn
+            # Yarn Berry's global cache (yarn 4, enableGlobalCache: true).
+            # NOTE: env vars are not interpolated here, so use `~`.
+            - ~/.yarn/berry/cache
 
       - persist_to_workspace:
           # Must be relative path from working_directory
           root: .
-          # Must be relative path from root
+          # Persist only public/build: build_php's `web` layer already carries
+          # public/.gitkeep, and two concurrent jobs persisting the same file
+          # is a workspace conflict.
           paths:
-            - web/wp-content/themes/sage/public
+            - web/wp-content/themes/sage/public/build
 
   deploy_to_pantheon:
     <<: *defaults
     steps:
       - checkout
 
-      # Attach the workspace
+      # Attach the workspace directly onto the checkout: build_php's
+      # web/ + vendor/ and build_yarn's public/build overlay in place,
+      # which is exactly what the old rsync-from-/tmp step did.
       - attach_workspace:
-          at: /tmp
+          at: .
 
       - run:
           # Set TERMINUS_ENV and related environment variables.
           # https://github.com/pantheon-systems/docker-build-tools-ci/blob/6.x/scripts/set-environment
           name: setup-environment-vars
           command: /build-tools-ci/scripts/set-environment
-
-      # Rsync the build artifact pieces web directory
-      - run:
-          name: sync build artifact
-          command: rsync -lrz /tmp/web /tmp/vendor .
 
       # Deploy to Pantheon
       - run:
@@ -236,10 +273,10 @@ workflows:
       - static_tests:
           context:
             - plugin_keys
-      - build_yarn
       - build_php:
           context:
             - plugin_keys
+      - build_yarn
       - deploy_to_pantheon:
           context:
             - plugin_keys

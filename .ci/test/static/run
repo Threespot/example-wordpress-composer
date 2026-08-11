@@ -10,19 +10,16 @@ set -eo pipefail
 # Run composer install to get the vendor directory
 composer install --no-ansi --no-interaction --optimize-autoloader --no-progress
 
-# Delete and reset the web directory
-# This is necessary so that third-party
-# dependencies are not tested
-git clean -fdX web
-
-# Lint php code for syntax errors
+# Lint php code for syntax errors. `composer lint` reads the file list from
+# `git ls-files` and excludes web/wp-content/plugins, so third-party plugin
+# code (committed or composer-installed) is never linted.
 composer -n lint
 
 # Install the Sage theme's composer dependencies so PHPStan can resolve
 # Acorn / Illuminate types. Skipped if the theme isn't present yet.
 if [ -f web/wp-content/themes/sage/composer.json ]; then
     (cd web/wp-content/themes/sage && \
-        composer install --ignore-platform-req=ext-redis --no-dev --no-ansi --no-interaction --no-progress)
+        composer install --ignore-platform-req=ext-redis --no-dev --no-ansi --no-interaction --no-progress --prefer-dist)
 fi
 
 # Coding standards (Pantheon-WP-Minimum via pantheon-systems/pantheon-wp-coding-standards).
