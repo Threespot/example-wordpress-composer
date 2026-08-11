@@ -248,7 +248,7 @@
     "psr-4": { "PantheonSystems\\WordHatHelpers\\": "tests/behat/helper_classes/" }
   },
   "autoload-dev": {
-    "psr-4": { "Gih\\Tests\\": "tests/" }
+    "psr-4": { "Threespot\\Tests\\": "tests/" }
   },
   "scripts": {
     "build-assets": [

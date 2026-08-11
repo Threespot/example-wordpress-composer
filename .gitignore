@@ -67,6 +67,9 @@ refactor-preview
 !/.yarn/versions
 /.pnp.*
 
+# PHPUnit
+.phpunit.result.cache
+
 # Visual regression testing
 /node_modules/
 /visual-regression/playwright-report/
