@@ -55,8 +55,7 @@ auth.json
 logs/*
 !logs/collect-logs-rsync.sh
 # Claude
-.claude/*
-!.claude/settings.json
+.claude/
 refactor-preview
 # Yarn (v2+)
 /.yarn/*
