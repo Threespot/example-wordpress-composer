@@ -29,6 +29,17 @@ if (!isset($_ENV['PANTHEON_ENVIRONMENT']) && file_exists($root_dir . '/.env')) {
 }
 
 /**
+ * Under Lando, PANTHEON_ENVIRONMENT is set ('lando') so the .env load above is
+ * skipped — but local-only secrets (e.g. plugin license keys) still live in
+ * .env. safeLoad() merges them WITHOUT overwriting values the Pantheon recipe
+ * already injected and without the required() checks (DB creds come from the
+ * recipe, not .env).
+ */
+if (($_ENV['PANTHEON_ENVIRONMENT'] ?? null) === 'lando' && file_exists($root_dir . '/.env')) {
+    Dotenv\Dotenv::createImmutable($root_dir)->safeLoad();
+}
+
+/**
  * Map Pantheon's env name → a logical WP_ENV the config files key off of.
  *   live      → production  (locked down, no debug)
  *   test      → staging     (locked down, no debug)
