@@ -6,6 +6,7 @@
     not scanned here. Starts from Pantheon-WP-Minimum so we can ratchet up to
     Pantheon-WP once the baseline is clean.</description>
 
+    <file>web/wp-content/mu-plugins</file>
     <file>web/wp-content/themes/sage/app</file>
     <file>web/wp-content/themes/sage/config</file>
     <file>web/wp-content/themes/sage/functions.php</file>
@@ -13,6 +14,16 @@
     <exclude-pattern>*/node_modules/*</exclude-pattern>
     <exclude-pattern>*/vendor/*</exclude-pattern>
     <exclude-pattern>*/web/wp/*</exclude-pattern>
+
+    <!-- Third-party mu-plugin code we never edit. bedrock-disallow-indexing and
+    pantheon-mu-plugin are Composer-managed; loader.php is Pantheon's own loader,
+    tracked only because Bedrock needs it in place (it writes $plugins and
+    $GLOBALS['totals'] by design to list mu-plugins on the Plugins screen).
+    Everything else under mu-plugins/ is project-owned, so the whole directory is
+    scanned and a newly added mu-plugin is covered without touching this file. -->
+    <exclude-pattern>*/mu-plugins/bedrock-disallow-indexing/*</exclude-pattern>
+    <exclude-pattern>*/mu-plugins/pantheon-mu-plugin/*</exclude-pattern>
+    <exclude-pattern>*/mu-plugins/loader.php</exclude-pattern>
 
     <arg name="extensions" value="php"/>
     <arg name="colors"/>
@@ -30,8 +41,11 @@
         <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
         <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment"/>
         <exclude name="Squiz.Commenting.FileComment.WrongStyle"/>
+        <exclude name="Squiz.Commenting.FileComment.SpacingAfterOpen"/>
         <exclude name="Squiz.Commenting.ClassComment.Missing"/>
         <exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+        <exclude name="Squiz.Commenting.VariableComment.Missing"/>
+        <exclude name="Generic.Commenting.DocComment.MissingShort"/>
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
         <exclude name="Squiz.Commenting.FunctionComment.DuplicateReturn"/>
@@ -69,6 +83,7 @@
         <exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments"/>
         <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
         <exclude name="PEAR.Functions.FunctionCallSignature.Indent"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.OpeningIndent"/>
         <exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket"/>
         <exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket"/>
         <exclude name="Generic.Functions.FunctionCallArgumentSpacing.NoSpaceAfterComma"/>
@@ -87,6 +102,7 @@
         <exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceAfterOpen"/>
         <exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceBeforeClose"/>
         <exclude name="Generic.Formatting.SpaceAfterCast.NoSpace"/>
+        <exclude name="WordPress.WhiteSpace.CastStructureSpacing.NoSpaceBeforeOpenParenthesis"/>
         <exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound"/>
         <exclude name="Universal.WhiteSpace.CommaSpacing.NoSpaceAfter"/>
 
@@ -94,6 +110,7 @@
         <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning"/>
         <exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned"/>
         <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned"/>
+        <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned"/>
 
         <!-- Array syntax / spacing -->
         <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found"/>
@@ -104,6 +121,11 @@
         <exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions.NoSpacesAroundArrayKeys"/>
 
         <!-- Naming conventions (style, not bug-prevention) -->
+        <!-- Our hooks are deliberately slash-namespaced (threespot/cache_purge/…,
+        threespot/blocks/…) so wp-base-config and the theme share one vocabulary.
+        WPCS wants all-underscore hook names; renaming ours would break the
+        package integration, so this is a house convention, not a lint debt. -->
+        <exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores"/>
         <exclude name="WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid"/>
         <exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase"/>
         <exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase"/>
@@ -111,7 +133,14 @@
         <exclude name="Universal.NamingConventions.NoReservedKeywordParameterNames.stringFound"/>
 
         <!-- Style preferences -->
+        <!-- Allow intentionally-kept unused params (e.g. WP filter/action
+        callback signatures where later args document the hook contract) -->
+        <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter"/>
         <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
+        <!-- error_log() is our only logging channel in mu-plugins, and the calls
+        are operational, not debug leftovers (e.g. failed Cloudflare purges in
+        threespot-cache-purge). All are prefixed with a plugin tag. -->
+        <exclude name="WordPress.PHP.DevelopmentFunctions.error_log_error_log"/>
         <exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
         <exclude name="Universal.Operators.DisallowShortTernary.Found"/>
         <exclude name="Universal.Operators.DisallowStandalonePostIncrementDecrement.PostIncrementFound"/>
