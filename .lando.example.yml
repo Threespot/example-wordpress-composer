@@ -23,7 +23,7 @@ services:
       - chmod +x wp-cli.phar
       - mv wp-cli.phar /usr/local/bin/wp
   cache:
-    type: redis:6.0
+    type: redis:7.4
   mailhog:
     type: mailhog
     portforward: true

@@ -83,10 +83,6 @@ refactor-preview
 !web/wp-content/plugins/facetwp*
 !web/wp-content/plugins/polylang-pro
 !web/wp-content/plugins/searchwp*
-# WP All Import/Export
-!web/wp-content/plugins/wp-all-*
-!web/wp-content/plugins/wpae*
-!web/wp-content/plugins/wpai*
 # The Events Calendar
 !web/wp-content/plugins/events-calendar-pro
 !web/wp-content/plugins/the-events-calendar-*
