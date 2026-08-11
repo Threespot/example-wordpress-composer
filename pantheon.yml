@@ -12,8 +12,26 @@ object_cache:
   version: 6.2
 
 workflows:
+  deploy:
+    after:
+      - type: webphp
+        description: 'Purge Cloudflare after deploy'
+        script: private/scripts/quicksilver/threespot-cloudflare-purge/purge-cloudflare.php
+  clear_cache:
+    after:
+      - type: webphp
+        description: 'Purge Cloudflare after cache clear'
+        script: private/scripts/quicksilver/threespot-cloudflare-purge/purge-cloudflare.php
+  clone_database:
+    after:
+      - type: webphp
+        description: 'Flush the object cache after a database clone'
+        script: private/scripts/quicksilver/threespot-object-cache-flush/flush-object-cache.php
   sync_code:
     after:
       - type: webphp
         description: 'Push changes back to GitHub if needed'
         script: private/scripts/quicksilver/quicksilver-pushback/push-back.php
+      - type: webphp
+        description: 'Purge Cloudflare after code sync'
+        script: private/scripts/quicksilver/threespot-cloudflare-purge/purge-cloudflare.php

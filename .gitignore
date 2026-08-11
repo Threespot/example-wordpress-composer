@@ -31,7 +31,9 @@ web/wp
 !web/private/
 web/private/*
 !web/private/scripts/
-web/private/scripts/quicksilver
+web/private/scripts/quicksilver/*
+!web/private/scripts/quicksilver/threespot-cloudflare-purge/
+!web/private/scripts/quicksilver/threespot-object-cache-flush/
 !web/private/config/
 !.circleci
 .bashrc
