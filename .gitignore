@@ -69,8 +69,8 @@ refactor-preview
 
 # Visual regression testing
 /node_modules/
-/playwright-report/
-/test-results/
+/visual-regression/playwright-report/
+/visual-regression/test-results/
 # Overrides to keep files
 !web/cache
 !web/wp-content/mu-plugins/bedrock-autoloader.php
