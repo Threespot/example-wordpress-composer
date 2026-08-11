@@ -191,6 +191,17 @@ if (isset($_ENV['LANDO']) && $_ENV['LANDO'] === 'ON') {
 
 Config::define('WP_REDIS_CONFIG', $ocp_settings);
 
+/**
+ * Disable Object Cache Pro when Redis isn't provisioned, e.g. on brand-new
+ * Pantheon sites before `terminus redis:enable` has been run. Without this,
+ * the object-cache.php drop-in tries to reach the 127.0.0.1 fallback above
+ * and every request (including `wp core install`) fails with
+ * "Error establishing a Redis connection".
+ */
+if (isset($_ENV['PANTHEON_ENVIRONMENT']) && !Env::get('CACHE_HOST')) {
+	Config::define('WP_REDIS_DISABLED', true);
+}
+
 
 /**
  * Per-environment overrides.
