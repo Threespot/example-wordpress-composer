@@ -3,7 +3,7 @@
  * Plugin Name: Object Cache Pro (Drop-in)
  * Plugin URI: https://objectcache.pro
  * Description: A business class Redis object cache backend for WordPress.
- * Version: 1.25.5
+ * Version: 1.25.6
  * Author: Rhubarb Group
  * Author URI: https://rhubarb.group
  * License: Proprietary
@@ -20,11 +20,18 @@ if (defined('WP_SETUP_CONFIG')) {
     return require_once ABSPATH . WPINC . '/cache.php';
 }
 
-if (defined('WP_REDIS_DISABLED') && WP_REDIS_DISABLED) {
-    return;
-}
+if (
+    (defined('WP_REDIS_DISABLED') && WP_REDIS_DISABLED) ||
+    ! empty(getenv('WP_REDIS_DISABLED'))
+) {
+    if (defined('WP_CLI') && WP_CLI) {
+        \WP_CLI::warning(\WP_CLI::colorize(
+            '%rObject Cache Pro is temporarily disabled — this is extremely risky.%n Only do this during a genuine ' .
+            'emergency, never for convenience. Data changed while disabled will not invalidate the ' .
+            'persistent cache, which then serves stale, inconsistent data once re-enabled.'
+        ));
+    }
 
-if (! empty(getenv('WP_REDIS_DISABLED'))) {
     return;
 }
 
